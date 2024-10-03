@@ -6,4 +6,4 @@ John Emmanuel Piala - https://github.com/jbpiala
 
 Kyla Amor Pantino - 
 
-Heiro Usana - hsuana20
+Heiro Usana - hsuana20 https://github.com/hsusana20
