@@ -22,4 +22,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
         ]);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/main
