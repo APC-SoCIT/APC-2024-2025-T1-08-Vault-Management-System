@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 $url = config('app.url');
 URL::forceRootUrl($url);
 
-Route::get('/', function () {
+Route::middleware('guest')->get('/', function () {
     return view('welcome');
 });
 
