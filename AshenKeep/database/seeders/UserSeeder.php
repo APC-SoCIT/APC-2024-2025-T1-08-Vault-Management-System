@@ -1,11 +1,14 @@
 <?php
+
 namespace Database\Seeders;
+
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+
 class UserSeeder extends Seeder
 {
     /**
@@ -39,12 +42,14 @@ class UserSeeder extends Seeder
                 'role' => 'Applicant',
             ]
         ];
+
         foreach($users as $user) {
             $created_user = User::create([
                 'name' => $user['name'],
                 'email' => $user['email'],
                 'password' => Hash::make($user['password']),
             ]);
+            
             $created_user->assignRole($user['role']);
         }
     }

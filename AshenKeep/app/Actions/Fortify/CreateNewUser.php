@@ -38,6 +38,6 @@ class CreateNewUser implements CreatesNewUsers
                     $user->assignRole('applicant'); // Assign the role after user creation
                 }
             );
-        });        
+        });
     }
 }
