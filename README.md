@@ -3,8 +3,11 @@ AshenKeep is a vault management system being developed by Team InnoVentures
 
 ## Installation in codespace
 docker context use default
+
 curl -s https://laravel.build/AshenKeep | bash
+
 cd AshenKeep
+
 ./vendor/bin/sail up
  
 ### Create new terminal
