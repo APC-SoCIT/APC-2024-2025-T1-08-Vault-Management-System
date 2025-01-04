@@ -12,8 +12,8 @@
         </div>
 
         <!-- Main Content -->
-        <div class="min-h-screen flex items-center px-8">
-            <div class="absolute inset-0 h-25 mt-60 max-w-xl mx-auto bg-blue-900 p-6 rounded items-center">
+        <div class="flex-1 px-8">
+            <div class="mt-12 mx-auto bg-blue-900 p-6 rounded-lg max-w-xl">
                 <h2 class="text-2xl font-semibold mb-6 text-white">Submit Your Requirements</h2>
                 <form id="requirementsForm" method="POST" enctype="multipart/form-data" action="{{ route('dashboard') }}">
                     @csrf 
@@ -24,6 +24,16 @@
                     <div class="mb-4">
                         <x-label for="file" value="{{ __('Attach a File') }}" class="text-white"/>
                         <x-input id="file" class="block mt-1 w-full border border-yellow-300 rounded-lg" type="file" name="file" :value="old('file')" multiple/>
+                    </div>
+                    <div class="mb-4">
+                        <x-label for="requirement_type" value="{{ __('Requirement Type') }}" class="text-white" />
+                        <select id="requirement_type" name="requirement_type" class="block mt-1 w-full border border-yellow-300 rounded-lg" required>
+                            <option value="" disabled selected>Select Requirement Type</option>
+                            <option value="document">Document</option>
+                            <option value="photo">Photo</option>
+                            <option value="contract">Contract</option>
+                            <option value="other">Other</option>
+                        </select>
                     </div>
                     <x-apply-button class="bg-yellow-600 text-white text-start w-4 py-3 rounded mb-4 flex items-start justify-start gap-2 hover:bg-yellow-700">
                         Submit
@@ -43,6 +53,7 @@
             const formData = new FormData();
             formData.append('name', document.getElementById('name').value);
             formData.append('file', document.getElementById('file').files[0]);
+            formData.append('requirement_type', document.getElementById('requirement_type').value);
 
             try {
                 // Request to Laravel Backend
