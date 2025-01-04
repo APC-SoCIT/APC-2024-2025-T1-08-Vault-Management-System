@@ -1,16 +1,12 @@
-
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <title>Laravel</title>
-
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
         <!-- Styles / Scripts -->
         @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
             @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -49,7 +45,6 @@
                                     >
                                         Log in
                                     </a>
-
                                     @if (Route::has('register'))
                                         <a
                                             href="{{ route('register') }}"
@@ -62,7 +57,6 @@
                             </nav>
                         @endif
                     </header>
-
                     <main class="mt-6">
                         <div class="grid gap-6 lg:grid-cols-2 lg:gap-8">
                             <div
@@ -73,7 +67,6 @@
                                     <div id="docs-card-content" class="flex items-start gap-6 lg:flex-col">
                                         <div class="pt-3 sm:pt-5 lg:pt-0">
                                             <h1 class="text-5xl font-semibold text-black dark:text-white">Secure a vault for your loved one today!</h1>
-
                                             <p class="mt-4 text-[#102A45] text-xl">
                                                 — Ashenkeep a seamless online system that provides easy access to vault securing. From application to issuance of  ownership, Ashenkeep ensures every step is seamless, secure, and accessible anytime, anywhere.
                                             </p>
@@ -86,7 +79,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div id="screenshot-container" class="relative flex w-full flex-1 items-stretch">
                                     <img
                                         src="./img/welcome_bg.svg"

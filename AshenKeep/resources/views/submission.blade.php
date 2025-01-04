@@ -27,7 +27,7 @@
                     </div>
                     <x-apply-button class="bg-yellow-600 text-white text-start w-4 py-3 rounded mb-4 flex items-start justify-start gap-2 hover:bg-yellow-700">
                         Submit
-                        <img src="{{ asset('img/submit_icon.svg') }}" alt="Send icon" class="w-6 h-6">
+                        <img src="{{ asset('img/requirements_send.svg') }}" alt="Send icon" class="w-6 h-6">
                     </x-apply-button>
                 </form>
             </div>
