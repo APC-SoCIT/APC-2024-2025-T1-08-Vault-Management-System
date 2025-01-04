@@ -14,7 +14,11 @@
         <!-- Main Content -->
         <div class="flex-1 px-8">
             <div class="mt-12 mx-auto bg-blue-900 p-6 rounded-lg max-w-xl">
-                <h2 class="text-2xl font-semibold mb-6 text-white">Submit Your Requirements</h2>
+                <h2 class="text-2xl font-semibold mb-4 text-white">Submit Your Requirements</h2>
+                <p class="text-sm text-white mb-6">
+                    Please ensure that the total size of your submission does not exceed 25 MB. Accepted image formats include JPEG, PNG, and GIF. For proper organization, kindly use a consistent file naming convention, such as <strong>[Name_Date_FileType]</strong>.
+                </p>
+                
                 <form id="requirementsForm" method="POST" enctype="multipart/form-data" action="{{ route('dashboard') }}">
                     @csrf 
                     <div>
