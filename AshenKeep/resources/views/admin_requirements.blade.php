@@ -11,88 +11,158 @@
             <table class="table-fixed w-full divide-y divide-gray-200 text-center border-collapse border-separate border-spacing-y-2 rounded-md overflow-hidden">
                 <thead class="bg-[#102A45] w-full">
                     <tr>
-                        <th class="p-6">ID</th>
-                        <th class="p-6">Name</th>
-                        <th class="p-6">Type</th>
-                        <th class="p-6">Format</th>
-                        <th class="p-6">Date</th>
-                        <th class="p-6">Time</th>
-                        <th class="p-6">Status</th>
+                    <th class="px-4 py-2">ID</th>
+                        <th class="px-4 py-2">Name</th>
+                        <th class="px-4 py-2">Type</th>
+                        <th class="px-4 py-2">Format</th>
+                        <th class="px-4 py-2">Date</th>
+                        <th class="px-4 py-2">Time</th>
+                        <th class="px-4 py-2">Status</th>
+                        <th class="px-4 py-2">Action</th>
                     </tr>
                 </thead>
                 <tbody class="auto-rows-auto">
                     <tr class="bg-white text-black">
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
+                    <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2">
+                            <div class="flex justify-center gap-2 mr-2">
+                                <x-apply-button class="bg-green-500 text-white px-4 py-2 rounded" onlick="issueProofOwnership(1)">Issue Proof</x-apply-button>
+                            </div>
+                        </td>
                     </tr>
                     <tr class="bg-white text-black">
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
+                    <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2">
+                            <div class="flex justify-center gap-2 mr-2">
+                                <x-apply-button class="bg-green-500 text-white px-4 py-2 rounded" onlick="issueProofOwnership(1)">Issue Proof</x-apply-button>
+                            </div>
+                        </td>
                     </tr>
                     <tr class="bg-white text-black">
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
+                    <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2">
+                            <div class="flex justify-center gap-2 mr-2">
+                                <x-apply-button class="bg-green-500 text-white px-4 py-2 rounded" onlick="issueProofOwnership(1)">Issue Proof</x-apply-button>
+                            </div>
+                        </td>
                     </tr>
                     <tr class="bg-white text-black">
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
+                    <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2">
+                            <div class="flex justify-center gap-2 mr-2">
+                                <x-apply-button class="bg-green-500 text-white px-4 py-2 rounded" onlick="issueProofOwnership(1)">Issue Proof</x-apply-button>
+                            </div>
+                        </td>
                     </tr>
                     <tr class="bg-white text-black">
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
+                    <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2">
+                            <div class="flex justify-center gap-2 mr-2">
+                                <x-apply-button class="bg-green-500 text-white px-4 py-2 rounded" onlick="issueProofOwnership(1)">Issue Proof</x-apply-button>
+                            </div>
+                        </td>
                     </tr>
                     <tr class="bg-white text-black">
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
+                    <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2">
+                            <div class="flex justify-center gap-2 mr-2">
+                                <x-apply-button class="bg-green-500 text-white px-4 py-2 rounded" onlick="issueProofOwnership(1)">Issue Proof</x-apply-button>
+                            </div>
+                        </td>
                     </tr>
                     <tr class="bg-white text-black">
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
+                    <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2">
+                            <div class="flex justify-center gap-2 mr-2">
+                                <x-apply-button class="bg-green-500 text-white px-4 py-2 rounded" onlick="issueProofOwnership(1)">Issue Proof</x-apply-button>
+                            </div>
+                        </td>
                     </tr>
                     <tr class="bg-white text-black">
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
+                    <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2">
+                            <div class="flex justify-center gap-2 mr-2">
+                                <x-apply-button class="bg-green-500 text-white px-4 py-2 rounded" onlick="issueProofOwnership(1)">Issue Proof</x-apply-button>
+                            </div>
+                        </td>
                     </tr>
+                    <tr class="bg-white text-black">
+                    <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2">
+                            <div class="flex justify-center gap-2 mr-2">
+                                <x-apply-button class="bg-green-500 text-white px-4 py-2 rounded" onlick="issueProofOwnership(1)">Issue Proof</x-apply-button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="bg-white text-black">
+                    <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2"></td>
+                        <td class="px-4 py-2">
+                            <div class="flex justify-center gap-2 mr-2">
+                                <x-apply-button class="bg-green-500 text-white px-4 py-2 rounded" onlick="issueProofOwnership(1)">Issue Proof</x-apply-button>
+                            </div>
+                        </td>
+                    </tr>
+                    
                 </tbody>
             </table>
         </div>
