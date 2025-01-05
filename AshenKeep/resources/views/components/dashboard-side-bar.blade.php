@@ -1,7 +1,10 @@
 <div class="bg-[#C28E21] text-[#102A45] flex flex-col justify-center items-center py-4 px-2 rounded-r-[70px] max-w-32">
 
+    <!--Admin Dashboard Side Bar-->
     @hasrole('Admin')
-    <a href="{{ url('/dashboard') }}"  class="mb-6 flex flex-col items-center rounded-lg hover:bg-white">
+
+    <!--Review Requirements-->
+    <a href="{{ url('/admin/requirements') }}"  class="mb-6 flex flex-col items-center rounded-lg hover:bg-white">
         <div class="h-10 w-10">
             <x-requirements />
         </div>
@@ -9,8 +12,9 @@
             Review Requirements
         </div>
     </a>
-    <!-- Apply for Vault -->
-    <a href="{{ url('/vault') }}"  class="mb-6 flex flex-col items-center rounded-lg hover:bg-white">
+
+    <!--Vaults-->
+    <a href="{{ url('/admin/vault') }}"  class="mb-6 flex flex-col items-center rounded-lg hover:bg-white">
         <div class="h-10 w-10">
             <x-vault />
         </div>
@@ -20,8 +24,10 @@
     </a>
     @endhasrole
 
+    <!--Office Staff Dashboard Side Bar-->
     @hasrole('Office Staff')
-    <!-- Logout -->
+    
+    <!--Manage Applications-->
     <a href="{{ url('/dashboard') }}"  class="mb-6 flex flex-col items-center rounded-lg hover:bg-white">
         <div class="h-10 w-10">
             <x-application />
@@ -31,7 +37,8 @@
         </div>
     </a>
 
-    <a href="{{ url('/dashboard') }}"  class="mb-6 flex flex-col items-center rounded-lg hover:bg-white">
+    <!--Manage Requirements-->
+    <a href="{{ url('/officestaff/requirements') }}"  class="mb-6 flex flex-col items-center rounded-lg hover:bg-white">
         <div class="h-10 w-10">
             <x-requirements />
         </div>
@@ -41,8 +48,10 @@
     </a>
     @endhasrole
 
+    <!--Finance Staff Dashboard Side Bar-->
     @hasrole('Finance Staff')
-    <!-- Donation -->
+    
+    <!--Manage Donations-->
     <a href="{{ url('/dashboard') }}"  class="mb-6 flex flex-col items-center rounded-lg hover:bg-white">
         <div class="h-10 w-10">
             <x-donation />
@@ -53,9 +62,11 @@
     </a>
     @endhasrole
 
+    <!--Applicant Dashboard Side Bar-->
     @hasrole('Applicant')
-    <!-- Logout -->
-    <a href="{{ url('/dashboard') }}"  class="mb-6 flex flex-col items-center rounded-lg hover:bg-white">
+    
+    <!--Apply-->
+    <a href="{{ url('/applicant/apply') }}"  class="mb-6 flex flex-col items-center rounded-lg hover:bg-white">
         <div class="h-10 w-10">
             <x-application />
         </div>
@@ -64,7 +75,8 @@
         </div>
     </a>
 
-    <a href="{{ url('/vault') }}"  class="mb-6 flex flex-col items-center rounded-lg hover:bg-white">
+    <!--View Vaults-->
+    <a href="{{ url('/applicant/vault') }}"  class="mb-6 flex flex-col items-center rounded-lg hover:bg-white">
         <div class="h-10 w-10">
             <x-vault />
         </div>

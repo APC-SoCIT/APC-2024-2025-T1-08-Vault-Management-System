@@ -11,6 +11,7 @@ Route::middleware('guest')->get('/', function () {
     return view('welcome');
 });
 
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -55,3 +56,84 @@ Route::middleware([
         return view('applicant-dashboard');
     })->name('applicant.dashboard');
 });
+
+
+// User accessing Admin page check
+Route::get('/admin/requirements', function () {
+    $user = Auth::user();
+
+    // authentication check
+    if (!$user || !$user->hasRole('Admin')) {
+        abort(403); // Forbidden if not an admin
+    }
+
+    return view('admin_requirements');
+})->middleware('auth');
+
+Route::get('/admin/vault', function () {
+    $user = Auth::user();
+
+    // authentication check
+    if (!$user || !$user->hasRole('Admin')) {
+        abort(403); // Forbidden if not an admin
+    }
+
+    return view('admin_vault');
+})->middleware('auth');
+
+// User accessing Office Staff page check
+Route::get('/officestaff/applications', function () {
+    $user = Auth::user();
+
+    // authentication check
+    if (!$user || !$user->hasRole('Office Staff')) {
+        abort(403); // Forbidden if not an admin
+    }
+
+    return view('officestaff-application');
+})->middleware('auth');
+
+Route::get('/officestaff/requirements', function () {
+    $user = Auth::user();
+
+    // Explicit authentication check
+    if (!$user || !$user->hasRole('Office Staff')) {
+        abort(403); // Forbidden if not an admin
+    }
+
+    return view('officestaff_requirements');
+})->middleware('auth');
+
+// User accessing Applicant page check
+Route::get('/applicant/apply', function () {
+    $user = Auth::user();
+
+    // authentication check
+    if (!$user || !$user->hasRole('Applicant')) {
+        abort(403); // Forbidden if not an admin
+    }
+
+    return view('apply');
+})->middleware('auth');
+
+Route::get('/applicant/vault', function () {
+    $user = Auth::user();
+
+    // authentication check
+    if (!$user || !$user->hasRole('Applicant')) {
+        abort(403); // Forbidden if not an admin
+    }
+
+    return view('applicant_vault');
+})->middleware('auth');
+
+Route::get('/applicant/requirements', function () {
+    $user = Auth::user();
+
+    // Explicit authentication check
+    if (!$user || !$user->hasRole('Applicant')) {
+        abort(403); // Forbidden if not an admin
+    }
+
+    return view('applicant_requirements');
+})->middleware('auth');
