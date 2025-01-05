@@ -12,12 +12,12 @@
                     <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg p-6">
 
                         <!-- Vault List Box -->
-                        <div class="bg-blue-900 rounded-lg p-6">
+                        <div class="rounded-lg p-6" style="background-color: #102A45;">
                             <div class="flex justify-between items-center mb-4">
                                 <h2 class="text-white text-xl font-semibold">Vaults List</h2>
                                 <div class="flex items-center space-x-4 ml-auto">
                                     <!--Filter button-->
-                                    <select id="locationFilter" class="form-select bg-blue-900 text-white rounded-lg border border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-300"></select>
+                                    <select id="locationFilter" class="form-select bg-white text-black rounded-lg border border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-300"></select>
                                     <!--Add New Button-->
                                     <button id="addRowButton" class="btn bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300">
                                         Add New Vault
@@ -28,7 +28,7 @@
                             <!--Table info-->
                             <div class="overflow-auto max-h-[400px]">
                                 <table class="table table-bordered w-full rounded-lg overflow-hidden">
-                                    <thead class="bg-blue-900 text-white text-lg font-semibold rounded-t-lg">
+                                    <thead class="bg-[#102A45] text-white text-lg font-semibold rounded-t-lg">
                                         <tr>
                                             <th class="p-2">Vault Number</th>
                                             <th class="p-2">Location</th>
