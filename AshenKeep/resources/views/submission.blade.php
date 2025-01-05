@@ -13,7 +13,7 @@
 
         <!-- Main Content -->
         <div class="flex-1 px-8">
-            <div class="mt-12 mx-auto bg-blue-900 p-6 rounded-lg max-w-xl">
+            <div class="mx-auto bg-blue-900 p-6 rounded-lg max-w-xl">
                 <h2 class="text-2xl font-semibold mb-4 text-white">Submit Your Requirements</h2>
                 <p class="text-sm text-white mb-6">
                     Please ensure that the total size of your submission does not exceed 25 MB. Accepted image formats include JPEG, PNG, and GIF. For proper organization, kindly use a consistent file naming convention, such as <strong>[Name_Date_FileType]</strong>.
@@ -33,9 +33,9 @@
                         <x-label for="requirement_type" value="{{ __('Requirement Type') }}" class="text-white" />
                         <select id="requirement_type" name="requirement_type" class="block mt-1 w-full border border-yellow-300 rounded-lg" required>
                             <option value="" disabled selected>Select Requirement Type</option>
-                            <option value="document">Document</option>
-                            <option value="photo">Photo</option>
-                            <option value="contract">Contract</option>
+                            <option value="document">Baptism</option>
+                            <option value="photo">Birth Certificate</option>
+                            <option value="contract">Marriage Certificate</option>
                             <option value="other">Other</option>
                         </select>
                     </div>
