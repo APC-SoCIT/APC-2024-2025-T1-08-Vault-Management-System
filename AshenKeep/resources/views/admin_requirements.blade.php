@@ -6,10 +6,10 @@
         </div>
 
         <!-- Main Content -->
-        <div class="max-h-[600px] overflow-auto border border-black bg-blue-900 text-white rounded-lg p-6 w-full mx-6">
+        <div class="max-h-[600px] overflow-auto border border-black bg-[#102A45] text-white rounded-lg p-6 w-full mx-6">
             <h3 class="text-2xl font-semibold mb-6 text-white">Review Requirements</h3>
             <table class="table-fixed w-full divide-y divide-gray-200 text-center border-collapse border-separate border-spacing-y-2 rounded-md overflow-hidden">
-                <thead class="bg-blue-900 w-full">
+                <thead class="bg-[#102A45] w-full">
                     <tr>
                         <th class="p-6">ID</th>
                         <th class="p-6">Name</th>
