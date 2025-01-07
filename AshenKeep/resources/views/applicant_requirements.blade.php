@@ -7,7 +7,7 @@
 
     <div class="flex py-12">
         <!-- Sidebar -->
-        <div class="hidden sm:flex">
+        <div class="w-auto">
             <x-dashboard-side-bar />
         </div>
         <!-- Main Content -->
@@ -25,81 +25,42 @@
                         <th class="p-6">Status</th>
                     </tr>
                 </thead>
-                <tbody class="auto-rows-auto">
-                    <tr class="bg-white text-black">
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                    </tr>
-                    <tr class="bg-white text-black">
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                    </tr>
-                    <tr class="bg-white text-black">
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                    </tr>
-                    <tr class="bg-white text-black">
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                    </tr>
-                    <tr class="bg-white text-black">
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                    </tr>
-                    <tr class="bg-white text-black">
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                    </tr>
-                    <tr class="bg-white text-black">
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                    </tr>
-                    <tr class="bg-white text-black">
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                        <td class="p-6"></td>
-                    </tr>
+                <tbody id="ApplicantReqTable" class="auto-rows-auto bg-white text-black shadow-lg rounded-xl p-6 mt-6">
+                    <!-- Display Submitted Requirements -->
                 </tbody>
             </table>
         </div>
-    </div>  
+    </div>
+
+    <script>
+        // Example data for submitted requirements (replace with actual server data)
+        const applicantRequirements = [
+            { id: 1, name: "John Doe", type: "Birth Certificate", format: "PDF", date: "2025-01-01", time: "10:00 AM", status: "Pending" },
+            { id: 2, name: "Jane Doe", type: "Baptism Certificate", format: "PDF", date: "2025-01-02", time: "11:00 AM", status: "Approved" },
+            { id: 3, name: "John Smith", type: "Marriage Certificate", format: "PDF", date: "2025-01-03", time: "12:00 PM", status: "Rejected" },
+        ];
+
+        // Function to populate the table with requirements
+        function populateApplicantRequirements() {
+            const tableBody = document.getElementById("ApplicantReqTable");
+            tableBody.innerHTML = ""; // Clear existing rows
+
+            applicantRequirements.forEach(req => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td class="p-6">${req.id}</td>
+                    <td class="p-6">${req.name}</td>
+                    <td class="p-6">${req.type}</td>
+                    <td class="p-6">${req.format}</td>
+                    <td class="p-6">${req.date}</td>
+                    <td class="p-6">${req.time}</td>
+                    <td class="p-6">${req.status}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Populate the table on page load
+        document.addEventListener("DOMContentLoaded", populateApplicantRequirements);
+    </script>
 </x-app-layout>
