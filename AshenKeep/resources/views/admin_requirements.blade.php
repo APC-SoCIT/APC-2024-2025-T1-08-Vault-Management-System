@@ -1,7 +1,7 @@
 <x-app-layout>
-    <div class="flex py-12">
+    <div class="flex py-12 h-screen">
         <!-- Sidebar -->
-        <div class="w-auto">
+        <div class="hidden sm:flex">
             <x-dashboard-side-bar />
         </div>
 

@@ -1,7 +1,7 @@
 <x-app-layout>
-    <div class="flex py-12">
+    <div class="flex py-12 h-screen">
         <!-- Sidebar -->
-        <div class="w-auto">
+        <div class="hidden sm:flex">
             <x-dashboard-side-bar />
         </div>
 
@@ -34,6 +34,9 @@
             { id: 1, name: "John", type: "Birth Certificate", format: "PDF", date: "2025-01-01", time: "10:00 AM", status: "Pending" },
             { id: 2, name: "John", type: "Baptism Certificate", format: "PDF", date: "2025-01-02", time: "11:00 AM", status: "Pending" },
             { id: 3, name: "John", type: "Marriage Certificate", format: "PDF", date: "2025-01-03", time: "12:00 PM", status: "Pending" },
+            { id: 4, name: "Ken", type: "Birth Certificate", format: "PDF", date: "2025-01-01", time: "10:00 AM", status: "Pending" },
+            { id: 5, name: "Ken", type: "Baptism Certificate", format: "PDF", date: "2025-01-02", time: "11:00 AM", status: "Pending" },
+            { id: 6, name: "Ken", type: "Marriage Certificate", format: "PDF", date: "2025-01-03", time: "12:00 PM", status: "Pending" },
         ];
 
         // Function to populate the table with submitted requirements
