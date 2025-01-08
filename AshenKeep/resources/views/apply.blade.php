@@ -1,9 +1,11 @@
 <x-app-layout>
+
     <div class="flex">
         <!-- Sidebar -->
         <div class="hidden sm:flex">
             <x-dashboard-side-bar />
         </div>
+
         <!-- Main Content -->
         <div class="flex-1">
             <div class="py-1">
@@ -27,37 +29,48 @@
                 <span class="text-gray-600 ml-2">Donation</span>
             </div>
         </div>
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
             <!-- Column 1 -->
             <div>
                 <label for="full_name" class="block font-medium text-gray-700">Full Name</label>
                 <input type="text" id="full_name" name="full_name" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-yellow-400 focus:border-yellow-400" required>
             </div>
+
             <div>
                 <label for="email" class="block font-medium text-gray-700">Email</label>
                 <input type="email" id="email" name="email" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-yellow-400 focus:border-yellow-400" required>
             </div>
+
             <div>
                 <label for="full_name" class="block font-medium text-gray-700">Permanent Address</label>
                 <input type="text" id="full_name" name="full_name" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-yellow-400 focus:border-yellow-400" required>
             </div>
+
             <div>
                 <label for="phone_number" class="block font-medium text-gray-700">Contact Number</label>
                 <input type="text" id="phone_number" name="phone_number" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-yellow-400 focus:border-yellow-400" required>
             </div>
+
             
+
             <div>
                 <label for="full_name" class="block font-medium text-gray-700">Current Address</label>
                 <input type="text" id="full_name" name="full_name" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-yellow-400 focus:border-yellow-400" required>
             </div>
+
+
             <div>
                 <label for="full_name" class="block font-medium text-gray-700">Place of Birth</label>
                 <input type="text" id="full_name" name="full_name" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-yellow-400 focus:border-yellow-400" required>
             </div>
+
             <div>
                 <label for="full_name" class="block font-medium text-gray-700">Provincial Address</label>
                 <input type="text" id="full_name" name="full_name" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-yellow-400 focus:border-yellow-400" required>
             </div>
+
             <div>
                 <label class="block font-medium text-gray-700">Birthday</label>
                 <div class="flex items-center space-x-2 mt-1">
@@ -66,8 +79,10 @@
                     <input type="text" name="birth_year" placeholder="YYYY" class="w-1/3 border-gray-300 rounded-md shadow-sm focus:ring-yellow-400 focus:border-yellow-400" required>
                 </div>
             </div>
+
             <!-- Column 2 -->
             
+
             <div class="col-span-1 md:col-span-2">
                 <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Submit</button>
             </div>
