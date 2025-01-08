@@ -1,0 +1,94 @@
+<x-app-layout>
+    <div class="flex py-12">
+        <!-- Sidebar -->
+        <div class="hidden sm:flex">
+            <x-dashboard-side-bar />
+        </div>
+
+        <div class="flex-1">
+            <div class="py-1 h-screen overflow-y-auto">
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg p-6">
+                        <!-- Vault List Box -->
+                        <div class="rounded-lg p-6" style="background-color: #102A45;">
+                            <div class="flex justify-between items-center mb-4">
+                                <h2 class="text-white text-xl font-semibold">Vaults List</h2>
+                                <input 
+                                    type="text" 
+                                    id="searchInput" 
+                                    placeholder="Search..." 
+                                    class="bg-blue-900 text-white rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-300"
+                                />
+                            </div>
+                            <div class="container mt-5">
+                                <table class="table-auto w-full border border-blue-500 rounded-lg overflow-hidden">
+                                    <thead class="bg-blue-900 text-white">
+                                        <tr>
+                                            <th class="px-4 py-2 text-center">Vault Number</th>
+                                            <th class="px-4 py-2 text-center">Location</th>
+                                            <th class="px-4 py-2 text-center">Availability</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="vaultsTableBody" class="bg-white text-blue-900 text-center">
+                                    <tr>
+                                        <td class="border px-4 py-2">V004</td>
+                                        <td class="border px-4 py-2">Center</td> 
+                                        <td class="border px-4 py-2">Occupied</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border px-4 py-2">V005</td>
+                                        <td class="border px-4 py-2">West</td> 
+                                        <td class="border px-4 py-2">Available</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border px-4 py-2">V006</td>
+                                        <td class="border px-4 py-2">East</td> 
+                                        <td class="border px-4 py-2">Occupied</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border px-4 py-2">V007</td>
+                                        <td class="border px-4 py-2">West</td> 
+                                        <td class="border px-4 py-2">Available</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border px-4 py-2">V008</td>
+                                        <td class="border px-4 py-2">Center</td> 
+                                        <td class="border px-4 py-2">Occupied</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border px-4 py-2">V009</td>
+                                        <td class="border px-4 py-2">East</td> 
+                                        <td class="border px-4 py-2">Available</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border px-4 py-2">V010</td>
+                                        <td class="border px-4 py-2">West</td> 
+                                        <td class="border px-4 py-2">Occupied</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="flex justify-between items-center mt-4">
+                                    <button 
+                                        id="prevButton" 
+                                        class="bg-blue-700 text-white px-4 py-2 rounded-lg hover:bg-blue-800 disabled:opacity-50"
+                                    >
+                                        Previous
+                                    </button>
+                                    <span id="pageInfo" class="text-white">Showing 10 of vaults</span>
+                                    <button 
+                                        id="nextButton" 
+                                        class="bg-blue-700 text-white px-4 py-2 rounded-lg hover:bg-blue-800 disabled:opacity-50"
+                                    >
+                                        Next
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</x-app-layout>
+
+
