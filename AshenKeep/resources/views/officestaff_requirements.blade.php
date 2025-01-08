@@ -13,16 +13,11 @@
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Type</th>
-                        <th>Format</th>
-                        <th>Date</th>
-                        <th>Time</th>
-                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody id="OfficeReqTable" class="auto-rows-auto bg-white text-black">
-                    <!-- Requirements populated here -->
+                    <!-- Grouped requirements populated here -->
                 </tbody>
             </table>
         </div>
@@ -36,35 +31,68 @@
             { id: 4, name: "Ken", type: "Birth Certificate", format: "PDF", date: "2025-01-01", time: "10:00 AM", status: "Pending" },
             { id: 5, name: "Ken", type: "Baptism Certificate", format: "PDF", date: "2025-01-02", time: "11:00 AM", status: "Pending" },
             { id: 6, name: "Ken", type: "Marriage Certificate", format: "PDF", date: "2025-01-03", time: "12:00 PM", status: "Pending" },
-            
         ];
-
-        const adminRequirementsData = JSON.parse(localStorage.getItem("adminRequirementsData")) || [];
 
         function populateRequirementsTable() {
             const tableBody = document.getElementById("OfficeReqTable");
             tableBody.innerHTML = "";
 
-            submittedRequirementsData.forEach(req => {
-                const row = `
-                    <tr>
-                        <td>${req.id}</td>
-                        <td>${req.name}</td>
-                        <td>${req.type}</td>
-                        <td>${req.format}</td>
-                        <td>${req.date}</td>
-                        <td>${req.time}</td>
-                        <td id="status-${req.id}">${req.status}</td>
+            const groupedData = submittedRequirementsData.reduce((acc, req) => {
+                if (!acc[req.name]) acc[req.name] = [];
+                acc[req.name].push(req);
+                return acc;
+            }, {});
+
+            Object.entries(groupedData).forEach(([name, requirements], index) => {
+                const parentRow = `
+                    <tr class="bg-gray-200">
+                        <td>${index + 1}</td>
+                        <td>${name}</td>
                         <td>
-                            <div class="flex justify-center gap-2 mr-2">
-                                <x-apply-button onclick="updateStatus(${req.id}, 'approved')" class="bg-green-500 px-4 py-2 rounded">Approve</x-apply-button>
-                                <x-apply-button onclick="updateStatus(${req.id}, 'rejected')" class="bg-red-500 px-4 py-2 rounded">Reject</x-apply-button>
-                            </div>
+                            <x-apply-button onclick="toggleDropdown(${index})" class="bg-blue-500 text-white px-4 py-2 rounded">
+                                View Requirements
+                            </x-apply-button>
+                        </td>
+                    </tr>
+                    <tr id="dropdown-${index}" class="hidden">
+                        <td colspan="3">
+                            <table class="w-full bg-gray-100 text-black">
+                                <thead>
+                                    <tr>
+                                        <th>Type</th>
+                                        <th>Format</th>
+                                        <th>Date</th>
+                                        <th>Time</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${requirements.map(req => `
+                                        <tr>
+                                            <td>${req.type}</td>
+                                            <td>${req.format}</td>
+                                            <td>${req.date}</td>
+                                            <td>${req.time}</td>
+                                            <td id="status-${req.id}">${req.status}</td>
+                                            <td>
+                                                <x-apply-button onclick="updateStatus(${req.id}, 'approved')" class="bg-green-500 px-4 py-2 rounded">Approve</x-apply-button>
+                                                <x-apply-button onclick="updateStatus(${req.id}, 'rejected')" class="bg-red-500 px-4 py-2 rounded">Reject</x-apply-button>
+                                            </td>
+                                        </tr>
+                                    `).join("")}
+                                </tbody>
+                            </table>
                         </td>
                     </tr>
                 `;
-                tableBody.innerHTML += row;
+                tableBody.innerHTML += parentRow;
             });
+        }
+
+        function toggleDropdown(index) {
+            const dropdown = document.getElementById(`dropdown-${index}`);
+            dropdown.classList.toggle("hidden");
         }
 
         function updateStatus(id, status) {
@@ -72,18 +100,7 @@
             if (req) {
                 req.status = status.charAt(0).toUpperCase() + status.slice(1);
                 document.getElementById(`status-${id}`).textContent = req.status;
-
-                if (status === "approved") {
-                    moveToAdmin(req);
-                }
             }
-        }
-
-        function moveToAdmin(requirement) {
-            submittedRequirementsData = submittedRequirementsData.filter(r => r.id !== requirement.id);
-            adminRequirementsData.push(requirement);
-            localStorage.setItem("adminRequirementsData", JSON.stringify(adminRequirementsData));
-            populateRequirementsTable();
         }
 
         document.addEventListener("DOMContentLoaded", populateRequirementsTable);

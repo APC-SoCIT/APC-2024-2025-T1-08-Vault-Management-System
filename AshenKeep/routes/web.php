@@ -140,15 +140,13 @@ Route::get('/applicant/requirements', function () {
     return view('applicant_requirements');
 })->middleware('auth');
 
-Route::get('/apply', [ApplicantController::class, 'page1'])->name('applicant.page1');
-Route::post('/apply/save', [ApplicantController::class, 'savePage1'])->name('applicant.savePage1');
-Route::get('/apply/step-2', [ApplicantController::class, 'page2'])->name('applicant.page2');
-Route::post('/apply/step-2/save', [ApplicantController::class, 'savePage2'])->name('applicant.savePage2');
-Route::get('/apply/step-3', [ApplicantController::class, 'page3'])->name('applicant.page3');
-Route::post('/apply/step-3/save', [ApplicantController::class, 'savePage3'])->name('applicant.savePage3');
-Route::get('/apply/step-4', [ApplicantController::class, 'page4'])->name('applicant.page4');
-Route::post('/apply/step-4/save', [ApplicantController::class, 'savePage4'])->name('applicant.savePage4');
-Route::get('/apply/step-5', [ApplicantController::class, 'page5'])->name('applicant.page5');
-Route::post('/apply/step-5/save', [ApplicantController::class, 'savePage5'])->name('applicant.savePage5');
-Route::get('/apply/success', [ApplicantController::class, 'success'])->name('applicant.success');
-Route::get('/applicants', [ApplicantController::class, 'index'])->name('applicant.index');
+Route::get('/applicant/submission', function () {
+    $user = Auth::user();
+
+    // Explicit authentication check
+    if (!$user || !$user->hasRole('Applicant')) {
+        abort(403); // Forbidden if not an admin
+    }
+
+    return view('submission_requirements');
+})->middleware('auth');
