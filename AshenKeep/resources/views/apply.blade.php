@@ -29,8 +29,11 @@
                 <span class="text-gray-600 ml-2">Donation</span>
             </div>
         </div>
-
+        
+        <form method="POST" action="{{ route('applicant.apply') }}" class="space-y-6">
+        @csrf
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
 
             <!-- Column 1 -->
             <div>
@@ -88,7 +91,7 @@
             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+</form>
         </div>
+    </div>
 </x-app-layout>
