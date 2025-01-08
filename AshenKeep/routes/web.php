@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ApplicantController;
 
 $url = config('app.url');
 URL::forceRootUrl($url);
@@ -10,7 +11,6 @@ URL::forceRootUrl($url);
 Route::middleware('guest')->get('/', function () {
     return view('welcome');
 });
-
 
 Route::middleware([
     'auth:sanctum',
@@ -116,6 +116,8 @@ Route::get('/applicant/apply', function () {
     return view('apply');
 })->middleware('auth');
 
+Route::post('/applicant/apply', [ApplicantController::class, 'create'])->name('applicant.apply');
+
 Route::get('/applicant/vault', function () {
     $user = Auth::user();
 
@@ -136,4 +138,15 @@ Route::get('/applicant/requirements', function () {
     }
 
     return view('applicant_requirements');
+})->middleware('auth');
+
+Route::get('/applicant/submission', function () {
+    $user = Auth::user();
+
+    // Explicit authentication check
+    if (!$user || !$user->hasRole('Applicant')) {
+        abort(403); // Forbidden if not an admin
+    }
+
+    return view('submission_requirements');
 })->middleware('auth');

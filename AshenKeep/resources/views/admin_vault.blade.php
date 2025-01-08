@@ -36,7 +36,7 @@
                                             <th class="p-2">Actions</th> <!-- New column for Edit/Save -->
                                         </tr>
                                     </thead>
-                                    <tbody id="vaultTableBody" class="bg-white text-blue-900 shadow-lg rounded-xl p-6 mt-6">
+                                    <tbody id="vaultTableBody" class="bg-white border border-gray-300 text-blue-900 shadow-lg rounded-xl p-6 mt-6">
                                         <!-- Vault data appears here -->
                                     </tbody>
                                 </table>
@@ -137,14 +137,14 @@
                 .map(
                     (vault, index) => `
                         <tr>
-                            <td class="text-center" id="vaultNumber-${index}" contenteditable="false">${vault.vaultNumber}</td>
-                            <td class="text-center" id="location-${index}" contenteditable="false">${vault.location}</td>
-                            <td class="text-center" id="vaultOwnerID-${index}" contenteditable="false">${vault.vaultOwnerID}</td>
-                            <td class="text-center" id="owner-${index}" contenteditable="false">${vault.owner}</td>
-                            <td class="text-center" id="dateIssued-${index}" contenteditable="false">${vault.dateIssued}</td>
-                            <td class="text-center" id="urnsQuantity-${index}" contenteditable="false">${vault.urnsQuantity}</td>
-                            <td class="text-center" id="availability-${index}" contenteditable="false">${vault.availability}</td>
-                            <td class="text-center">
+                            <td class="text-center border border-gray-300" id="vaultNumber-${index}" contenteditable="false">${vault.vaultNumber}</td>
+                            <td class="text-center border border-gray-300" id="location-${index}" contenteditable="false">${vault.location}</td>
+                            <td class="text-center border border-gray-300" id="vaultOwnerID-${index}" contenteditable="false">${vault.vaultOwnerID}</td>
+                            <td class="text-center border border-gray-300" id="owner-${index}" contenteditable="false">${vault.owner}</td>
+                            <td class="text-center border border-gray-300" id="dateIssued-${index}" contenteditable="false">${vault.dateIssued}</td>
+                            <td class="text-center border border-gray-300" id="urnsQuantity-${index}" contenteditable="false">${vault.urnsQuantity}</td>
+                            <td class="text-center border border-gray-300" id="availability-${index}" contenteditable="false">${vault.availability}</td>
+                            <td class="text-center border border-gray-300">
                                 <button class="px-4 py-2 bg-green-500 text-white rounded-lg" onclick="editRow(${index})">Edit</button>
                                 <button class="px-4 py-2 bg-blue-500 text-white rounded-lg hidden" onclick="saveRow(${index})">Save</button>
                             </td>
