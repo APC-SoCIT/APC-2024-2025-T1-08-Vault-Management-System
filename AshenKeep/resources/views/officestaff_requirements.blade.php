@@ -49,9 +49,9 @@
                         <td>${index + 1}</td>
                         <td>${name}</td>
                         <td>
-                            <button onclick="toggleDropdown(${index})" class="bg-blue-500 text-white px-4 py-2 rounded">
+                            <x-apply-button onclick="toggleDropdown(${index})" class="bg-blue-500 text-white px-4 py-2 rounded">
                                 View Requirements
-                            </button>
+                            </x-apply-button>
                         </td>
                     </tr>
                     <tr id="dropdown-${index}" class="hidden">
@@ -76,8 +76,8 @@
                                             <td>${req.time}</td>
                                             <td id="status-${req.id}">${req.status}</td>
                                             <td>
-                                                <button onclick="updateStatus(${req.id}, 'approved')" class="bg-green-500 px-4 py-2 rounded">Approve</button>
-                                                <button onclick="updateStatus(${req.id}, 'rejected')" class="bg-red-500 px-4 py-2 rounded">Reject</button>
+                                                <x-apply-button onclick="updateStatus(${req.id}, 'approved')" class="bg-green-500 px-4 py-2 rounded">Approve</x-apply-button>
+                                                <x-apply-button onclick="updateStatus(${req.id}, 'rejected')" class="bg-red-500 px-4 py-2 rounded">Reject</x-apply-button>
                                             </td>
                                         </tr>
                                     `).join("")}

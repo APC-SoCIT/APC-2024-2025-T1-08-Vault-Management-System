@@ -150,7 +150,3 @@ Route::get('/applicant/submission', function () {
 
     return view('submission_requirements');
 })->middleware('auth');
-
-Route::get('/',[ApplicantController::class,'index'])->name('index');
-Route::post('/',[ApplicantController::class,'create'])->name('create');
-Route::get('/show',[ApplicantController::class,'show'])->name('show');
