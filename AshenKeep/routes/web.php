@@ -140,6 +140,17 @@ Route::get('/applicant/requirements', function () {
     return view('applicant_requirements');
 })->middleware('auth');
 
+Route::get('/applicant/submission', function () {
+    $user = Auth::user();
+
+    // Explicit authentication check
+    if (!$user || !$user->hasRole('Applicant')) {
+        abort(403); // Forbidden if not an admin
+    }
+
+    return view('submission_requirements');
+})->middleware('auth');
+
 Route::get('/',[ApplicantController::class,'index'])->name('index');
 Route::post('/',[ApplicantController::class,'create'])->name('create');
 Route::get('/show',[ApplicantController::class,'show'])->name('show');
