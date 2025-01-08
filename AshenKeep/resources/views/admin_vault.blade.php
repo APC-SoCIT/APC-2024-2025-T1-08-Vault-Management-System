@@ -1,12 +1,11 @@
 <x-app-layout>
-    <div class="flex py-12">
+    <div class="flex py-12 h-screen">
         <!-- Sidebar -->
-        <div class="w-auto">
+        <div class="hidden sm:flex">
             <x-dashboard-side-bar />
         </div>
 
         <div class="flex-1 ml-8">
-            <div class="py-1 h-screen overflow-y-auto">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg p-6">
 
@@ -49,7 +48,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
 
