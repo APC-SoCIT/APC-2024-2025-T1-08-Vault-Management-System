@@ -64,7 +64,7 @@ Route::get('/admin/requirements', function () {
 
     // authentication check
     if (!$user || !$user->hasRole('Admin')) {
-        abort(403); // Forbidden if not an admin
+        abort(403); // Forbidden
     }
 
     return view('admin_requirements');
@@ -75,7 +75,7 @@ Route::get('/admin/vault', function () {
 
     // authentication check
     if (!$user || !$user->hasRole('Admin')) {
-        abort(403); // Forbidden if not an admin
+        abort(403); // Forbidden
     }
 
     return view('admin_vault');
@@ -87,7 +87,7 @@ Route::get('/officestaff/applications', function () {
 
     // authentication check
     if (!$user || !$user->hasRole('Office Staff')) {
-        abort(403); // Forbidden if not an admin
+        abort(403); // Forbidden
     }
 
     return view('officestaff-application');
@@ -98,7 +98,7 @@ Route::get('/officestaff/requirements', function () {
 
     // Explicit authentication check
     if (!$user || !$user->hasRole('Office Staff')) {
-        abort(403); // Forbidden if not an admin
+        abort(403); // Forbidden
     }
 
     return view('officestaff_requirements');
@@ -110,7 +110,7 @@ Route::get('/applicant/apply', function () {
 
     // authentication check
     if (!$user || !$user->hasRole('Applicant')) {
-        abort(403); // Forbidden if not an admin
+        abort(403); // Forbidden
     }
 
     return view('apply');
@@ -123,7 +123,7 @@ Route::get('/applicant/vault', function () {
 
     // authentication check
     if (!$user || !$user->hasRole('Applicant')) {
-        abort(403); // Forbidden if not an admin
+        abort(403); // Forbidden
     }
 
     return view('applicant_vault');
@@ -134,7 +134,7 @@ Route::get('/applicant/requirements', function () {
 
     // Explicit authentication check
     if (!$user || !$user->hasRole('Applicant')) {
-        abort(403); // Forbidden if not an admin
+        abort(403); // Forbidden
     }
 
     return view('applicant_requirements');
