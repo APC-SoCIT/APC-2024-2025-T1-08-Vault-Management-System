@@ -116,8 +116,6 @@ Route::get('/applicant/apply', function () {
     return view('apply');
 })->middleware('auth');
 
-Route::post('/applicant/apply', [ApplicantController::class, 'create'])->name('applicant.apply');
-
 Route::get('/applicant/vault', function () {
     $user = Auth::user();
 
@@ -140,9 +138,8 @@ Route::get('/applicant/requirements', function () {
     return view('applicant_requirements');
 })->middleware('auth');
 
-Route::get('/apply', [ApplicantController::class, 'page1'])->name('applicant.page1');
 Route::post('/apply/save', [ApplicantController::class, 'savePage1'])->name('applicant.savePage1');
-Route::get('/apply/step-2', [ApplicantController::class, 'page2'])->name('applicant.page2');
+Route::get('/applicant/step-2', [ApplicantController::class, 'page2'])->name('applicant.page2');
 Route::post('/apply/step-2/save', [ApplicantController::class, 'savePage2'])->name('applicant.savePage2');
 Route::get('/apply/step-3', [ApplicantController::class, 'page3'])->name('applicant.page3');
 Route::post('/apply/step-3/save', [ApplicantController::class, 'savePage3'])->name('applicant.savePage3');
