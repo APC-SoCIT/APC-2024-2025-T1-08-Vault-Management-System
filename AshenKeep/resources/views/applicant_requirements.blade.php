@@ -9,7 +9,7 @@
             <div class="flex justify-between items-center mb-6">
                 <h3 class="text-2xl font-semibold text-white">Requirements</h3>
                 <a href=" {{ url('/applicant/submission') }}">
-                    <x-apply-button class="bg-green-500 text-white px-4 py-2 rounded">Submission Requirements</x-apply-button>
+                    <x-apply-button class="bg-green-500 text-white px-4 py-2 rounded">Submit Requirements</x-apply-button>
                 </a>
             </div>
             <table class="table-fixed w-full divide-y divide-gray-200 text-center border-collapse border-separate border-spacing-y-2 rounded-md overflow-hidden">

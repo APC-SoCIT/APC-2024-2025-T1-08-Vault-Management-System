@@ -17,14 +17,14 @@
                     </tr>
                 </thead>
                 <tbody id="OfficeReqTable" class="auto-rows-auto bg-white text-black">
-                    <!-- Grouped requirements populated here -->
+                    <!-- Grouped requirements will be populated here -->
                 </tbody>
             </table>
         </div>
     </div>
 
     <script>
-        let submittedRequirementsData = [
+        const submittedRequirementsData = [
             { id: 1, name: "John", type: "Birth Certificate", format: "PDF", date: "2025-01-01", time: "10:00 AM", status: "Pending" },
             { id: 2, name: "John", type: "Baptism Certificate", format: "PDF", date: "2025-01-02", time: "11:00 AM", status: "Pending" },
             { id: 3, name: "John", type: "Marriage Certificate", format: "PDF", date: "2025-01-03", time: "12:00 PM", status: "Pending" },
@@ -37,6 +37,7 @@
             const tableBody = document.getElementById("OfficeReqTable");
             tableBody.innerHTML = "";
 
+            // Group requirements by name
             const groupedData = submittedRequirementsData.reduce((acc, req) => {
                 if (!acc[req.name]) acc[req.name] = [];
                 acc[req.name].push(req);
@@ -49,9 +50,9 @@
                         <td>${index + 1}</td>
                         <td>${name}</td>
                         <td>
-                            <x-apply-button onclick="toggleDropdown(${index})" class="bg-blue-500 text-white px-4 py-2 rounded">
+                            <button onclick="toggleDropdown(${index})" class="bg-blue-500 w-48 text-white px-4 py-2 rounded">
                                 View Requirements
-                            </x-apply-button>
+                            </button>
                         </td>
                     </tr>
                     <tr id="dropdown-${index}" class="hidden">
@@ -76,8 +77,8 @@
                                             <td>${req.time}</td>
                                             <td id="status-${req.id}">${req.status}</td>
                                             <td>
-                                                <x-apply-button onclick="updateStatus(${req.id}, 'approved')" class="bg-green-500 px-4 py-2 rounded">Approve</x-apply-button>
-                                                <x-apply-button onclick="updateStatus(${req.id}, 'rejected')" class="bg-red-500 px-4 py-2 rounded">Reject</x-apply-button>
+                                                <button onclick="updateStatus(${req.id}, 'approved')" class="bg-green-500 px-4 py-2 rounded">Approve</button>
+                                                <button onclick="updateStatus(${req.id}, 'rejected')" class="bg-red-500 px-4 py-2 rounded">Reject</button>
                                             </td>
                                         </tr>
                                     `).join("")}
