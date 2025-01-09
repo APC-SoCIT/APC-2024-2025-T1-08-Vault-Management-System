@@ -30,37 +30,41 @@
             </div>
         </div>
 
-        <form action="{{ route('applicant.savePage1') }}" method="POST">
+        <form action="{{ route('applicant.savePage5') }}" method="POST">
         @csrf
-        <label for="full_name">Full Name:</label>
-        <input type="text" id="full_name" name="full_name" required>
+        <label for="fathers_name">Father's Name:</label>
+        <input type="text" id="fathers_name" name="fathers_name">
         <br>
- 
-        <label for="permanent_address">Permanent Address:</label>
-        <input type="text" id="permanent_address" name="permanent_address" required>
+
+        <label for="fathers_email_address">Father's Email:</label>
+        <input type="email" id="fathers_email_address" name="fathers_email_address">
         <br>
- 
-        <label for="current_address">Current Address:</label>
-        <input type="text" id="current_address" name="current_address" required>
+
+        <label for="fathers_landline_number">Father's Landline Number:</label>
+        <input type="text" id="fathers_landline_number" name="fathers_landline_number">
         <br>
- 
-        <label for="provincial_address">Provincial Address:</label>
-        <input type="text" id="provincial_address" name="provincial_address" required>
+
+        <label for="fathers_mobile_number">Father's Mobile Number:</label>
+        <input type="text" id="fathers_mobile_number" name="fathers_mobile_number">
         <br>
- 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+
+        <label for="mothers_name">Mother's Name:</label>
+        <input type="text" id="mothers_name" name="mothers_name">
         <br>
- 
-        <label for="landline_number">Landline Number:</label>
-        <input type="text" id="landline_number" name="landline_number">
+
+        <label for="mothers_email_address">Mother's Email:</label>
+        <input type="email" id="mothers_email_address" name="mothers_email_address">
         <br>
- 
-        <label for="mobile_number">Mobile Number:</label>
-        <input type="text" id="mobile_number" name="mobile_number" required>
+
+        <label for="mothers_landline_number">Mother's Landline Number:</label>
+        <input type="text" id="mothers_landline_number" name="mothers_landline_number">
         <br>
- 
-        <button type="submit">Next</button>
+
+        <label for="mothers_mobile_number">Mother's Mobile Number:</label>
+        <input type="text" id="mothers_mobile_number" name="mothers_mobile_number">
+        <br>
+
+        <button type="submit">Submit</button>
     </form>
         </div>
     </div>

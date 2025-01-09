@@ -64,7 +64,7 @@ Route::get('/admin/requirements', function () {
 
     // authentication check
     if (!$user || !$user->hasRole('Admin')) {
-        abort(403); // Forbidden if not an admin
+        abort(403); // Forbidden
     }
 
     return view('admin_requirements');
@@ -75,7 +75,7 @@ Route::get('/admin/vault', function () {
 
     // authentication check
     if (!$user || !$user->hasRole('Admin')) {
-        abort(403); // Forbidden if not an admin
+        abort(403); // Forbidden
     }
 
     return view('admin_vault');
@@ -87,7 +87,7 @@ Route::get('/officestaff/applications', function () {
 
     // authentication check
     if (!$user || !$user->hasRole('Office Staff')) {
-        abort(403); // Forbidden if not an admin
+        abort(403); // Forbidden
     }
 
     return view('officestaff-application');
@@ -98,7 +98,7 @@ Route::get('/officestaff/requirements', function () {
 
     // Explicit authentication check
     if (!$user || !$user->hasRole('Office Staff')) {
-        abort(403); // Forbidden if not an admin
+        abort(403); // Forbidden
     }
 
     return view('officestaff_requirements');
@@ -110,20 +110,18 @@ Route::get('/applicant/apply', function () {
 
     // authentication check
     if (!$user || !$user->hasRole('Applicant')) {
-        abort(403); // Forbidden if not an admin
+        abort(403); // Forbidden
     }
 
     return view('apply');
 })->middleware('auth');
-
-Route::post('/applicant/apply', [ApplicantController::class, 'create'])->name('applicant.apply');
 
 Route::get('/applicant/vault', function () {
     $user = Auth::user();
 
     // authentication check
     if (!$user || !$user->hasRole('Applicant')) {
-        abort(403); // Forbidden if not an admin
+        abort(403); // Forbidden
     }
 
     return view('applicant_vault');
@@ -134,7 +132,7 @@ Route::get('/applicant/requirements', function () {
 
     // Explicit authentication check
     if (!$user || !$user->hasRole('Applicant')) {
-        abort(403); // Forbidden if not an admin
+        abort(403); // Forbidden
     }
 
     return view('applicant_requirements');
@@ -150,3 +148,15 @@ Route::get('/applicant/submission', function () {
 
     return view('submission_requirements');
 })->middleware('auth');
+
+Route::post('/apply/save', [ApplicantController::class, 'savePage1'])->name('applicant.savePage1');
+Route::get('/applicant/step-2', [ApplicantController::class, 'page2'])->name('applicant.page2');
+Route::post('/apply/step-2/save', [ApplicantController::class, 'savePage2'])->name('applicant.savePage2');
+Route::get('/apply/step-3', [ApplicantController::class, 'page3'])->name('applicant.page3');
+Route::post('/apply/step-3/save', [ApplicantController::class, 'savePage3'])->name('applicant.savePage3');
+Route::get('/apply/step-4', [ApplicantController::class, 'page4'])->name('applicant.page4');
+Route::post('/apply/step-4/save', [ApplicantController::class, 'savePage4'])->name('applicant.savePage4');
+Route::get('/apply/step-5', [ApplicantController::class, 'page5'])->name('applicant.page5');
+Route::post('/apply/step-5/save', [ApplicantController::class, 'savePage5'])->name('applicant.savePage5');
+Route::get('/apply/success', [ApplicantController::class, 'success'])->name('applicant.success');
+Route::get('/applicants', [ApplicantController::class, 'index'])->name('applicant.index');

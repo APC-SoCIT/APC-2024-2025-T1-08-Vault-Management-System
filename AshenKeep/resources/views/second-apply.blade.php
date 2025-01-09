@@ -30,36 +30,32 @@
             </div>
         </div>
 
-        <form action="{{ route('applicant.savePage1') }}" method="POST">
+        <form action="{{ route('applicant.savePage2') }}" method="POST">
         @csrf
-        <label for="full_name">Full Name:</label>
-        <input type="text" id="full_name" name="full_name" required>
+        <label for="date_of_birth">Date of Birth:</label>
+        <input type="date" id="date_of_birth" name="date_of_birth" required>
         <br>
- 
-        <label for="permanent_address">Permanent Address:</label>
-        <input type="text" id="permanent_address" name="permanent_address" required>
+
+        <label for="place_of_birth">Place of Birth:</label>
+        <input type="text" id="place_of_birth" name="place_of_birth" required>
         <br>
- 
-        <label for="current_address">Current Address:</label>
-        <input type="text" id="current_address" name="current_address" required>
+
+        <label for="citizenship">Citizenship:</label>
+        <input type="text" id="citizenship" name="citizenship" required>
         <br>
- 
-        <label for="provincial_address">Provincial Address:</label>
-        <input type="text" id="provincial_address" name="provincial_address" required>
+
+        <label for="place_of_catholic_baptism">Place of Catholic Baptism:</label>
+        <input type="text" id="place_of_catholic_baptism" name="place_of_catholic_baptism">
         <br>
- 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+
+        <label for="date_of_catholic_baptism">Date of Catholic Baptism:</label>
+        <input type="date" id="date_of_catholic_baptism" name="date_of_catholic_baptism">
         <br>
- 
-        <label for="landline_number">Landline Number:</label>
-        <input type="text" id="landline_number" name="landline_number">
+
+        <label for="religious_organization_affiliated_with">Religious Organization Affiliated With:</label>
+        <input type="text" id="religious_organization_affiliated_with" name="religious_organization_affiliated_with">
         <br>
- 
-        <label for="mobile_number">Mobile Number:</label>
-        <input type="text" id="mobile_number" name="mobile_number" required>
-        <br>
- 
+
         <button type="submit">Next</button>
     </form>
         </div>

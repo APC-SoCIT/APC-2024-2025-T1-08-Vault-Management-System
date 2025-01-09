@@ -30,36 +30,32 @@
             </div>
         </div>
 
-        <form action="{{ route('applicant.savePage1') }}" method="POST">
+        <form action="{{ route('applicant.savePage4') }}" method="POST">
         @csrf
-        <label for="full_name">Full Name:</label>
-        <input type="text" id="full_name" name="full_name" required>
+        <label for="spouses_name">Spouse's Name:</label>
+        <input type="text" id="spouses_name" name="spouses_name">
         <br>
- 
-        <label for="permanent_address">Permanent Address:</label>
-        <input type="text" id="permanent_address" name="permanent_address" required>
+
+        <label for="spouses_date_of_birth">Spouse's Date of Birth:</label>
+        <input type="date" id="spouses_date_of_birth" name="spouses_date_of_birth">
         <br>
- 
-        <label for="current_address">Current Address:</label>
-        <input type="text" id="current_address" name="current_address" required>
+
+        <label for="spouses_place_of_birth">Spouse's Place of Birth:</label>
+        <input type="text" id="spouses_place_of_birth" name="spouses_place_of_birth">
         <br>
- 
-        <label for="provincial_address">Provincial Address:</label>
-        <input type="text" id="provincial_address" name="provincial_address" required>
+
+        <label for="spouses_email_address">Spouse's Email:</label>
+        <input type="email" id="spouses_email_address" name="spouses_email_address">
         <br>
- 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+
+        <label for="spouses_landline_number">Spouse's Landline Number:</label>
+        <input type="text" id="spouses_landline_number" name="spouses_landline_number">
         <br>
- 
-        <label for="landline_number">Landline Number:</label>
-        <input type="text" id="landline_number" name="landline_number">
+
+        <label for="spouses_mobile_number">Spouse's Mobile Number:</label>
+        <input type="text" id="spouses_mobile_number" name="spouses_mobile_number">
         <br>
- 
-        <label for="mobile_number">Mobile Number:</label>
-        <input type="text" id="mobile_number" name="mobile_number" required>
-        <br>
- 
+
         <button type="submit">Next</button>
     </form>
         </div>
