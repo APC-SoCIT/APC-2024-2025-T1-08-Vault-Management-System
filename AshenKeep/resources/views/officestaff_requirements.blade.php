@@ -1,30 +1,40 @@
 <x-app-layout>
-    <div class="flex py-12 h-screen">
+    <div class="flex">
         <!-- Sidebar -->
         <div class="hidden sm:flex">
             <x-dashboard-side-bar />
         </div>
 
         <!-- Main Content -->
-        <div class="max-h-[600px] overflow-auto border border-black bg-[#102A45] text-white rounded-lg p-6 w-full mx-6">
-            <h3 class="text-2xl font-semibold mb-6 text-white">Manage Requirements</h3>
-            <table class="table-fixed w-full divide-y divide-gray-200 text-center border-collapse border-separate border-spacing-y-2 rounded-md overflow-hidden">
-                <thead class="bg-[#102A45] w-full">
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody id="OfficeReqTable" class="auto-rows-auto bg-white text-black">
-                    <!-- Grouped requirements populated here -->
-                </tbody>
-            </table>
+        <div class="flex-1">
+            <div class="py-1 overflow-y-auto">
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg p-6">
+                        <!-- Manage Requirements Section -->
+                        <div class="overflow-auto border border-black bg-[#102A45] text-white rounded-lg p-6 mx-6">
+                            <h3 class="text-2xl font-semibold mb-6 text-white">Manage Requirements</h3>
+                            <table class="table-fixed w-full divide-y divide-gray-200 text-center border-collapse border-separate border-spacing-y-2 rounded-md overflow-hidden">
+                                <thead class="bg-[#102A45] w-full">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="OfficeReqTable" class="auto-rows-auto bg-white text-black">
+                                    <!-- Grouped requirements will be populated here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
-        let submittedRequirementsData = [
+        // Sample requirements data
+        const submittedRequirementsData = [
             { id: 1, name: "John", type: "Birth Certificate", format: "PDF", date: "2025-01-01", time: "10:00 AM", status: "Pending" },
             { id: 2, name: "John", type: "Baptism Certificate", format: "PDF", date: "2025-01-02", time: "11:00 AM", status: "Pending" },
             { id: 3, name: "John", type: "Marriage Certificate", format: "PDF", date: "2025-01-03", time: "12:00 PM", status: "Pending" },
@@ -33,10 +43,12 @@
             { id: 6, name: "Ken", type: "Marriage Certificate", format: "PDF", date: "2025-01-03", time: "12:00 PM", status: "Pending" },
         ];
 
+        // Populate the requirements table
         function populateRequirementsTable() {
             const tableBody = document.getElementById("OfficeReqTable");
             tableBody.innerHTML = "";
 
+            // Group requirements by name
             const groupedData = submittedRequirementsData.reduce((acc, req) => {
                 if (!acc[req.name]) acc[req.name] = [];
                 acc[req.name].push(req);
@@ -49,9 +61,9 @@
                         <td>${index + 1}</td>
                         <td>${name}</td>
                         <td>
-                            <x-apply-button onclick="toggleDropdown(${index})" class="bg-blue-500 text-white px-4 py-2 rounded">
+                            <button onclick="toggleDropdown(${index})" class="bg-blue-500 w-48 text-white px-4 py-2 rounded">
                                 View Requirements
-                            </x-apply-button>
+                            </button>
                         </td>
                     </tr>
                     <tr id="dropdown-${index}" class="hidden">
@@ -76,8 +88,8 @@
                                             <td>${req.time}</td>
                                             <td id="status-${req.id}">${req.status}</td>
                                             <td>
-                                                <x-apply-button onclick="updateStatus(${req.id}, 'approved')" class="bg-green-500 px-4 py-2 rounded">Approve</x-apply-button>
-                                                <x-apply-button onclick="updateStatus(${req.id}, 'rejected')" class="bg-red-500 px-4 py-2 rounded">Reject</x-apply-button>
+                                                <button onclick="updateStatus(${req.id}, 'approved')" class="bg-green-500 px-4 py-2 rounded">Approve</button>
+                                                <button onclick="updateStatus(${req.id}, 'rejected')" class="bg-red-500 px-4 py-2 rounded">Reject</button>
                                             </td>
                                         </tr>
                                     `).join("")}
@@ -90,11 +102,13 @@
             });
         }
 
+        // Toggle visibility of dropdown rows
         function toggleDropdown(index) {
             const dropdown = document.getElementById(`dropdown-${index}`);
             dropdown.classList.toggle("hidden");
         }
 
+        // Update the status of a requirement
         function updateStatus(id, status) {
             const req = submittedRequirementsData.find(r => r.id === id);
             if (req) {
@@ -103,6 +117,7 @@
             }
         }
 
+        // Initialize the table on page load
         document.addEventListener("DOMContentLoaded", populateRequirementsTable);
     </script>
 </x-app-layout>
