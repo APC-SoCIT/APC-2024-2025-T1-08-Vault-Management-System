@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="flex py-12 h-screen">
+    <div class="flex">
         <!-- Sidebar -->
         <div class="hidden sm:flex">
             <x-dashboard-side-bar />
@@ -7,7 +7,7 @@
 
         <!-- Main Content -->
         <div class="flex-1">
-            <div class="py-1 h-screen overflow-y-auto">
+            <div class="py-1 overflow-y-auto">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg p-6">
                         <!-- Requirements Table Section -->
