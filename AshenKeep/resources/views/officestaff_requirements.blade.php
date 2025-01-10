@@ -90,6 +90,8 @@
                                             <td>
                                                 <button onclick="updateStatus(${req.id}, 'approved')" class="bg-green-500 px-4 py-2 rounded">Approve</button>
                                                 <button onclick="updateStatus(${req.id}, 'rejected')" class="bg-red-500 px-4 py-2 rounded">Reject</button>
+                                                <a href="${req.fileUrl}" target="_blank" class="bg-yellow-500 px-4 py-2 rounded">View File</a>
+                                                <a href="${req.fileUrl}" download class="bg-yellow-500 px-4 py-2 rounded">Download</a>
                                             </td>
                                         </tr>
                                     `).join("")}
