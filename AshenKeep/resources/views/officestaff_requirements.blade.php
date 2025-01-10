@@ -25,6 +25,11 @@
                                     <!-- Grouped requirements will be populated here -->
                                 </tbody>
                             </table>
+                            <!-- Pagination Controls -->
+                            <div class="mt-4 flex justify-between">
+                                <button id="prevPage" onclick="changePage(-1)" class="bg-blue-500 text-white px-4 py-2 rounded disabled:opacity-50" disabled>Previous</button>
+                                <button id="nextPage" onclick="changePage(1)" class="bg-blue-500 text-white px-4 py-2 rounded">Next</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -33,7 +38,6 @@
     </div>
 
     <script>
-        // Sample requirements data
         const submittedRequirementsData = [
             { id: 1, name: "John", type: "Birth Certificate", format: "PDF", date: "2025-01-01", time: "10:00 AM", status: "Pending" },
             { id: 2, name: "John", type: "Baptism Certificate", format: "PDF", date: "2025-01-02", time: "11:00 AM", status: "Pending" },
@@ -43,7 +47,10 @@
             { id: 6, name: "Ken", type: "Marriage Certificate", format: "PDF", date: "2025-01-03", time: "12:00 PM", status: "Pending" },
         ];
 
-        // Populate the requirements table
+        const itemsPerPage = 15; // Number of items per page
+        let currentPage = 0;
+
+        // Function to populate the table
         function populateRequirementsTable() {
             const tableBody = document.getElementById("OfficeReqTable");
             tableBody.innerHTML = "";
@@ -55,7 +62,11 @@
                 return acc;
             }, {});
 
-            Object.entries(groupedData).forEach(([name, requirements], index) => {
+            // Get current page's data
+            const currentData = paginateData(groupedData);
+
+            // Populate table with grouped data
+            Object.entries(currentData).forEach(([name, requirements], index) => {
                 const parentRow = `
                     <tr class="bg-gray-200">
                         <td>${index + 1}</td>
@@ -102,6 +113,24 @@
                 `;
                 tableBody.innerHTML += parentRow;
             });
+
+            // Update pagination buttons
+            document.getElementById("prevPage").disabled = currentPage === 0;
+            document.getElementById("nextPage").disabled = currentPage >= Math.ceil(submittedRequirementsData.length / itemsPerPage) - 1;
+        }
+
+        // Function to paginate the data
+        function paginateData(data) {
+            const dataArray = Object.entries(data);
+            const startIndex = currentPage * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            return Object.fromEntries(dataArray.slice(startIndex, endIndex));
+        }
+
+        // Change page function
+        function changePage(direction) {
+            currentPage += direction;
+            populateRequirementsTable();
         }
 
         // Toggle visibility of dropdown rows
