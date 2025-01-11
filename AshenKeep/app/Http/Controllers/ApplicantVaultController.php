@@ -8,10 +8,10 @@ use App\Models\ApplicantVault;
  
 class ApplicantVaultController extends Controller
 {
-    
+   
     public function index()
     {
         $applicantVaults=ApplicantVault::all();
-        return view('YUNG VIEW', compact('applicantVaults'));
+        return view('applicant_vault', compact('applicantVaults'));
     }
 }
