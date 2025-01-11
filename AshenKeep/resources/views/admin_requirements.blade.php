@@ -30,6 +30,11 @@
                                     <!-- Requirements added dynamically -->
                                 </tbody>
                             </table>
+                            <!-- Pagination Controls -->
+                            <div class="flex justify-between mt-4">
+                                <button onclick="previousPage()" class="bg-blue-500 text-white px-4 py-2 rounded" id="prevBtn">Previous</button>
+                                <button onclick="nextPage()" class="bg-blue-500 text-white px-4 py-2 rounded" id="nextBtn">Next</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -38,15 +43,24 @@
     </div>
 
     <script>
-        // Fetch requirements data from localStorage
+        const pageSize = 15; // Number of items per page
+        let currentPage = 1;
+
+        // Sample data (Replace with your actual data)
         const adminRequirementsData = JSON.parse(localStorage.getItem("adminRequirementsData")) || [];
 
-        // Populate the Admin Requirements Table
+        // Function to handle pagination
         function populateAdminTable() {
             const tableBody = document.getElementById("AdminReqTable");
             tableBody.innerHTML = ""; // Clear existing rows
 
-            adminRequirementsData.forEach(req => {
+            // Calculate the range for the current page
+            const startIndex = (currentPage - 1) * pageSize;
+            const endIndex = startIndex + pageSize;
+            const paginatedData = adminRequirementsData.slice(startIndex, endIndex);
+
+            // Populate table with current page data
+            paginatedData.forEach(req => {
                 const row = `
                     <tr>
                         <td>${req.id}</td>
@@ -67,6 +81,26 @@
                 `;
                 tableBody.innerHTML += row;
             });
+
+            // Disable/Enable pagination buttons
+            document.getElementById("prevBtn").disabled = currentPage === 1;
+            document.getElementById("nextBtn").disabled = currentPage * pageSize >= adminRequirementsData.length;
+        }
+
+        // Go to the next page
+        function nextPage() {
+            if (currentPage * pageSize < adminRequirementsData.length) {
+                currentPage++;
+                populateAdminTable();
+            }
+        }
+
+        // Go to the previous page
+        function previousPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                populateAdminTable();
+            }
         }
 
         // Handle issuing proof of ownership
