@@ -7,7 +7,7 @@
 
     <div class="flex">
         <!-- Sidebar -->
-        <div class="hidden sm:flex">
+        <div class="hidden sm:flex min-h-full">
             <x-dashboard-side-bar />
         </div>
 

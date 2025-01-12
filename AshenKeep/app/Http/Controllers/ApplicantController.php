@@ -174,7 +174,7 @@ class ApplicantController extends Controller
     public function index()
     {
         $applicants = Applicants::all();
-        return view('show', compact('applicants'));
+        return view('office-staff-application', compact('applicants'));
     }
 
     public function cancel()

@@ -27,15 +27,15 @@ return new class extends Migration
             $table->string('citizenship');
             $table->string('place_of_catholic_baptism');
             $table->date('date_of_catholic_baptism');
-            $table->string('religious_organization_affiliated_with');
-            $table->string('donors_occupation');
-            $table->string('employers_name_or_business_name');
-            $table->text('business_address');
-            $table->string('employers_email_or_business_email_address');
+            $table->string('religious_organization_affiliated_with')->nullable();
+            $table->string('donors_occupation')->nullable();
+            $table->string('employers_name_or_business_name')->nullable();
+            $table->text('business_address')->nullable();
+            $table->string('employers_email_or_business_email_address')->nullable();
             $table->string('business_landline_number')->nullable();
             $table->string('business_mobile_number')->nullable();
-            $table->string('position');
-            $table->integer('years_in_employment_or_business');
+            $table->string('position')->nullable();
+            $table->integer('years_in_employment_or_business')->nullable();
 
             // Spouse's Information
             $table->string('spouses_name')->nullable();

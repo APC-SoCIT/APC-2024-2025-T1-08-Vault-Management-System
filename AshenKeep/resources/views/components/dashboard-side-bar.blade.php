@@ -28,7 +28,7 @@
     @hasrole('Office Staff')
     
     <!--Manage Applications-->
-    <a href="{{ url('/dashboard') }}"  class="mb-6 flex flex-col items-center rounded-lg hover:bg-white">
+    <a href="{{ url('/officestaff/applications') }}"  class="mb-6 flex flex-col items-center rounded-lg hover:bg-white">
         <div class="h-10 w-10">
             <x-application />
         </div>

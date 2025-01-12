@@ -81,17 +81,7 @@ Route::get('/admin/vault', function () {
     return view('admin_vault');
 })->middleware('auth');
 
-// User accessing Office Staff page check
-Route::get('/officestaff/applications', function () {
-    $user = Auth::user();
 
-    // authentication check
-    if (!$user || !$user->hasRole('Office Staff')) {
-        abort(403); // Forbidden
-    }
-
-    return view('officestaff-application');
-})->middleware('auth');
 
 Route::get('/officestaff/requirements', function () {
     $user = Auth::user();
@@ -143,7 +133,7 @@ Route::get('/applicant/submission', function () {
 
     // Explicit authentication check
     if (!$user || !$user->hasRole('Applicant')) {
-        abort(403); // Forbidden if not an admin
+        abort(403); // Forbidden
     }
 
     return view('submission_requirements');
@@ -160,3 +150,5 @@ Route::get('/apply/step-5', [ApplicantController::class, 'page5'])->name('applic
 Route::post('/apply/step-5/save', [ApplicantController::class, 'savePage5'])->name('applicant.savePage5');
 Route::get('/apply/success', [ApplicantController::class, 'success'])->name('applicant.success');
 Route::get('/applicants', [ApplicantController::class, 'index'])->name('applicant.index');
+
+Route::get('/officestaff/applications', [ApplicantController::class, 'index'])->name('officestaff.appliations');
