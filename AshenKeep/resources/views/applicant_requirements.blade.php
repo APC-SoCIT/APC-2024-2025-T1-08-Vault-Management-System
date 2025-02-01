@@ -1,33 +1,43 @@
 <x-app-layout>
-    <div class="flex py-12 h-screen">
+    <div class="flex">
         <!-- Sidebar -->
         <div class="hidden sm:flex">
             <x-dashboard-side-bar />
         </div>
+
         <!-- Main Content -->
-        <div class="max-h-[600px] overflow-auto border border-black bg-[#102A45] text-white rounded-lg p-6 w-full mx-6">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-semibold text-white">Requirements</h3>
-                <a href=" {{ url('/applicant/submission') }}">
-                    <x-apply-button class="bg-green-500 text-white px-4 py-2 rounded">Submission Requirements</x-apply-button>
-                </a>
+        <div class="flex-1">
+            <div class="py-1 overflow-y-auto">
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg p-6">
+                        <div class="overflow-auto border border-black bg-[#102A45] text-white rounded-lg p-6 ">
+                            <div class="flex justify-between items-center mb-6">
+                                <h3 class="text-2xl font-semibold text-white">Requirements</h3>
+                                <a href="{{ url('/applicant/submission') }}">
+                                    <x-apply-button class="bg-green-500 text-white px-4 py-2 rounded">Submit Requirements</x-apply-button>
+                                </a>
+                            </div>
+
+                            <table class="table-fixed w-full divide-y divide-gray-200 text-center border-collapse border-separate border-spacing-y-2 rounded-md overflow-hidden">
+                                <thead class="bg-[#102A45] w-full">
+                                    <tr>
+                                        <th class="p-6">ID</th>
+                                        <th class="p-6">Name</th>
+                                        <th class="p-6">Type</th>
+                                        <th class="p-6">Format</th>
+                                        <th class="p-6">Date</th>
+                                        <th class="p-6">Time</th>
+                                        <th class="p-6">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="ApplicantReqTable" class="auto-rows-auto bg-white text-black shadow-lg rounded-xl p-6 mt-6">
+                                    <!-- Display Submitted Requirements -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <table class="table-fixed w-full divide-y divide-gray-200 text-center border-collapse border-separate border-spacing-y-2 rounded-md overflow-hidden">
-                <thead class="bg-[#102A45] w-full">
-                    <tr>
-                        <th class="p-6">ID</th>
-                        <th class="p-6">Name</th>
-                        <th class="p-6">Type</th>
-                        <th class="p-6">Format</th>
-                        <th class="p-6">Date</th>
-                        <th class="p-6">Time</th>
-                        <th class="p-6">Status</th>
-                    </tr>
-                </thead>
-                <tbody id="ApplicantReqTable" class="auto-rows-auto bg-white text-black shadow-lg rounded-xl p-6 mt-6">
-                    <!-- Display Submitted Requirements -->
-                </tbody>
-            </table>
         </div>
     </div>
 
