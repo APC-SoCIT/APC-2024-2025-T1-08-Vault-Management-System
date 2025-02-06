@@ -12,6 +12,10 @@ Route::middleware('guest')->get('/', function () {
     return view('welcome');
 });
 
+Route::get('/vaults', function () {
+    return view('applicant_vault');
+})->name('vaults');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -104,17 +108,6 @@ Route::get('/applicant/apply', function () {
     }
 
     return view('apply');
-})->middleware('auth');
-
-Route::get('/applicant/vault', function () {
-    $user = Auth::user();
-
-    // authentication check
-    if (!$user || !$user->hasRole('Applicant')) {
-        abort(403); // Forbidden
-    }
-
-    return view('applicant_vault');
 })->middleware('auth');
 
 Route::get('/applicant/requirements', function () {
