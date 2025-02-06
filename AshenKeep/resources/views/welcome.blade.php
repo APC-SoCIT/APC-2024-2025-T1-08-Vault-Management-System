@@ -54,6 +54,12 @@
                                         </a>
                                     @endif
                                 @endauth
+                                <a
+                                    href="{{ route('login') }}"
+                                    class="rounded-md px-3 py-2 text-[#102A45] ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                                >
+                                    Vault Lists
+                                </a>
                             </nav>
                         @endif
                     </header>
@@ -89,5 +95,10 @@
                 </div>
             </div>
         </div>
+        @stack('modals')
+        @livewireScripts
+        <!-- Start of HubSpot Embed Code -->
+        <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/49180725.js"></script>
+        <!-- End of HubSpot Embed Code -->
     </body>
 </html>
