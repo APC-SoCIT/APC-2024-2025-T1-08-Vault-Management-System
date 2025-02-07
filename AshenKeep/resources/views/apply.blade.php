@@ -35,11 +35,11 @@
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <div>
                                             <label for="full_name" class="block font-medium text-gray-700">Full Name</label>
-                                            <input type="text" id="full_name" name="full_name" value="{{ Auth::user()->name }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-yellow-400 focus:border-yellow-400" required>
+                                            <input type="text" id="full_name" name="full_name" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-yellow-400 focus:border-yellow-400" required>
                                         </div>
                                         <div>
                                             <label for="email" class="block font-medium text-gray-700">Email</label>
-                                            <input type="email" id="email" name="email" value="{{ Auth::user()->email }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-yellow-400 focus:border-yellow-400" required>
+                                            <input type="email" id="email" name="email" value="{{ Auth::user()->email }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-yellow-400 focus:border-yellow-400" required readonly>
                                         </div>
                                         <div>
                                             <label for="full_name" class="block font-medium text-gray-700">Permanent Address</label>
