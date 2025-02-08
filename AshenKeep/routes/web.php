@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ApplicantController;
+use App\Http\Controllers\RequirementController;
+
 
 $url = config('app.url');
 URL::forceRootUrl($url);
