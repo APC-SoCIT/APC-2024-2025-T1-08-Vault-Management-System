@@ -13,14 +13,20 @@
 
                     @foreach($groupedRequirements->groupBy('full_name') as $applicantName => $requirements)
                         <div class="mb-6" x-data="{ open: false }">
-                            <button @click="open = !open" class="text-lg font-semibold text-white bg-gray-700 hover:bg-gray-600 transition duration-300 p-3 rounded-lg w-full text-left shadow-md flex justify-between items-center">
+                            <button @click="open = !open" 
+                                class="text-lg font-semibold text-white bg-gray-700 hover:bg-gray-600 transition duration-300 p-3 rounded-lg w-full text-left shadow-md flex justify-between items-center">
                                 <span>{{ $applicantName }}</span>
-                                <svg x-show="!open" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                                <svg x-show="open" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
-                                </svg>
+                                <div class="flex items-center gap-x-3">
+                                    <span class="text-sm {{ $requirements->first()->status == 'pending' ? 'text-yellow-500' : ($requirements->first()->status == 'approved' ? 'text-green-500' : 'text-green-500') }}">
+                                        {{ ucfirst($requirements->first()->status) }}
+                                    </span>
+                                    <svg x-show="!open" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                    <svg x-show="open" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+                                    </svg>
+                                </div>
                             </button>
 
                             <div x-show="open" x-cloak class="mt-4 border border-gray-500 rounded-lg overflow-hidden shadow-md">
@@ -31,33 +37,21 @@
                                             <th class="border border-gray-300 px-4 py-2">Type</th>
                                             <th class="border border-gray-300 px-4 py-2">Files</th>
                                             <th class="border border-gray-300 px-4 py-2">Date Submitted</th>
-                                            <th class="border border-gray-300 px-4 py-2">Status</th>
                                         </tr>
                                     </thead>
                                     <tbody class="bg-gray-900 text-white">
                                         @foreach($requirements as $requirement)
                                             <tr class="hover:bg-gray-700 transition duration-200">
-                                                <td class="border border-gray-300 px-4 py-2 text-white">
-                                                    {{ $requirement->id }}
-                                                </td>
-                                                <td class="border border-gray-300 px-4 py-2 text-white">
-                                                    {{ ucfirst($requirement->requirement_type) }}
-                                                </td>
-                                                <td class="border border-gray-300 px-4 py-2 text-white">
+                                                <td class="border border-gray-300 px-4 py-2">{{ $requirement->id }}</td>
+                                                <td class="border border-gray-300 px-4 py-2">{{ ucfirst($requirement->requirement_type) }}</td>
+                                                <td class="border border-gray-300 px-4 py-2">
                                                     @if(is_array($requirement->files))
                                                         @foreach($requirement->files as $file)
                                                             <a href="{{ Storage::url($file) }}" target="_blank" class="text-blue-500 underline">View File</a><br>
                                                         @endforeach
                                                     @endif
                                                 </td>
-                                                <td class="border border-gray-300 px-4 py-2 text-white">
-                                                    {{ $requirement->created_at->format('Y-m-d H:i') }}
-                                                </td>
-                                                <td class="border border-gray-300 px-4 py-2 text-white">
-                                                    <span class="text-sm {{ $requirement->status == 'pending' ? 'text-yellow-500' : ($requirement->status == 'approved' ? 'text-green-500' : 'text-red-500') }}">
-                                                        {{ ucfirst($requirement->status) }}
-                                                    </span>
-                                                </td>
+                                                <td class="border border-gray-300 px-4 py-2">{{ $requirement->created_at->format('Y-m-d H:i') }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -65,7 +59,8 @@
 
                                 <form action="{{ route('issue_proof', $applicantName) }}" method="POST" class="mt-4">
                                     @csrf
-                                    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-lg shadow hover:bg-green-600 transition duration-200">
+                                    <button type="submit" 
+                                        class="bg-green-500 text-white px-4 py-2 rounded-lg shadow hover:bg-green-600 transition duration-200">
                                         Issue Proof of Ownership
                                     </button>
                                 </form>
