@@ -1,11 +1,5 @@
 <x-app-layout>
-
     <div class="flex">
-        <!-- Sidebar -->
-        <div class="hidden sm:flex">
-            <x-dashboard-side-bar />
-        </div>
-
         <!-- Main Content -->
         <div class="flex-1">
             <div class="py-1">

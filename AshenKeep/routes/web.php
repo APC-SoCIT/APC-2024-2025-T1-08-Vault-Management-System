@@ -4,8 +4,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ApplicantController;
+use App\Http\Controllers\BeneficiaryController;
 use App\Http\Controllers\RequirementController;
-
 
 $url = config('app.url');
 URL::forceRootUrl($url);
@@ -101,16 +101,8 @@ Route::get('/officestaff/requirements', function () {
 })->middleware('auth');
 
 // User accessing Applicant page check
-Route::get('/applicant/apply', function () {
-    $user = Auth::user();
+Route::get('/applicant/apply', [ApplicantController::class, 'page1'])->name('applicant.page1');
 
-    // authentication check
-    if (!$user || !$user->hasRole('Applicant')) {
-        abort(403); // Forbidden
-    }
-
-    return view('apply');
-})->middleware('auth');
 
 Route::get('/applicant/requirements', function () {
     $user = Auth::user();
@@ -143,8 +135,17 @@ Route::get('/apply/step-4', [ApplicantController::class, 'page4'])->name('applic
 Route::post('/apply/step-4/save', [ApplicantController::class, 'savePage4'])->name('applicant.savePage4');
 Route::get('/apply/step-5', [ApplicantController::class, 'page5'])->name('applicant.page5');
 Route::post('/apply/step-5/save', [ApplicantController::class, 'savePage5'])->name('applicant.savePage5');
-Route::get('/apply/success', [ApplicantController::class, 'success'])->name('applicant.success');
-Route::get('/applicants', [ApplicantController::class, 'index'])->name('applicant.index');
+Route::get('/apply/step-6', [BeneficiaryController::class, 'page6'])->name('applicant.page6');
+Route::post('/apply/step-6/save', [BeneficiaryController::class, 'savePage6'])->name('applicant.savePage6');
+Route::get('/apply/step-7', [BeneficiaryController::class, 'page7'])->name('applicant.page7');
+Route::post('/apply/step-7/save', [BeneficiaryController::class, 'savePage7'])->name('applicant.savePage7');
+Route::get('/apply/step-8', [BeneficiaryController::class, 'page8'])->name('applicant.page8');
+Route::post('/apply/step-8/save', [BeneficiaryController::class, 'savePage8'])->name('applicant.savePage8');
+Route::get('/apply/success', [BeneficiaryController::class, 'success'])->name('applicant.success');
+
+Route::get('/apply/oops', function() { 
+    return view('oops'); 
+})->name('with.existing');
 
 Route::get('/officestaff/applications', [ApplicantController::class, 'index'])->name('officestaff.appliations');
 
