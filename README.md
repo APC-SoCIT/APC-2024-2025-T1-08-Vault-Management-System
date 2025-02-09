@@ -1,4 +1,4 @@
-# AshenKeep - Vault Management System
+# AshenKeep - Vault Application Management System
 AshenKeep is a vault management system being developed by Team InnoVentures
 
 ## Installation in codespace

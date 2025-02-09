@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ApplicantController;
 use App\Http\Controllers\BeneficiaryController;
+use App\Http\Controllers\RequirementController;
 
 $url = config('app.url');
 URL::forceRootUrl($url);
@@ -12,6 +13,10 @@ URL::forceRootUrl($url);
 Route::middleware('guest')->get('/', function () {
     return view('welcome');
 });
+
+Route::get('/vaults', function () {
+    return view('applicant_vault');
+})->name('vaults');
 
 Route::middleware([
     'auth:sanctum',
@@ -99,17 +104,6 @@ Route::get('/officestaff/requirements', function () {
 Route::get('/applicant/apply', [ApplicantController::class, 'page1'])->name('applicant.page1');
 
 
-Route::get('/applicant/vault', function () {
-    $user = Auth::user();
-
-    // authentication check
-    if (!$user || !$user->hasRole('Applicant')) {
-        abort(403); // Forbidden
-    }
-
-    return view('applicant_vault');
-})->middleware('auth');
-
 Route::get('/applicant/requirements', function () {
     $user = Auth::user();
 
@@ -154,3 +148,13 @@ Route::get('/apply/oops', function() {
 })->name('with.existing');
 
 Route::get('/officestaff/applications', [ApplicantController::class, 'index'])->name('officestaff.appliations');
+
+//Requirements
+Route::get('/applicant/requirements', [RequirementController::class, 'index'])->name('applicant_requirements');
+Route::get('/officestaff/requirements', [RequirementController::class,'viewOfficeRequirements'])->name('officestaff_requirements');
+
+Route::post('/applicant/submission', [RequirementController::class, 'store'])->name('submission_requirements');
+Route::post('/officestaff/requirements/batch-update', [RequirementController::class, 'batchUpdateStatus'])->name('batch_update_status');
+
+Route::get('/admin/requirements', [RequirementController::class, 'viewAdminRequirements'])->name('admin_requirements');
+Route::post('/admin/issue-proof/{applicantName}', [RequirementController::class, 'issueProofOwnership'])->name('issue_proof');
