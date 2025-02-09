@@ -1,24 +1,14 @@
-<nav x-data="{ open: false }">
+<nav x-data="{ open: false }" class="bg-keep-white dark:bg-gray-800 border-b border-keep-white dark:border-gray-700">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-[100rem] mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
-                <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-mark class="block h-16 w-auto" />
-                    </a>
-                </div>
-
-                
-
-                <!-- Navigation Links -->
+                <!-- Text -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <h1 class="font-semibold text-[#102A45]" style="font-size: 2.25rem;">
+                    <h1 class="font-semibold text-keep-blue" style="font-size: 2.25rem;">
                         AshenKeep
                     </h1>
                 </div>
-            </div>
 
             <div class="hidden sm:flex sm:items-center sm:ms-6">
 
@@ -39,11 +29,105 @@
                         {{ __('About Us') }}
                     </x-nav-link>
                 </div>
+                <!--Admin Dashboard Side Bar-->
+                @hasrole('Admin')
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="{{ url('/admin/requirements') }}" :active="request()->routeIs('/admin/requirements')">
+                        {{ __('Review Application') }}
+                    </x-nav-link>
+                </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Profile') }}
+                    <x-nav-link href="{{ url('/admin/vault') }}" :active="request()->routeIs('/admin/vault')">
+                        {{ __('Vaults') }}
                     </x-nav-link>
+                </div>
+                @endhasrole
+
+                <!--Office Staff Dashboard Side Bar-->
+                @hasrole('Office Staff')
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="{{ url('/officestaff/applications') }}" :active="request()->routeIs('/officestaff/applications')">
+                        {{ __('Manage Applications') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="{{ url('/officestaff/requirements') }}" :active="request()->routeIs('/officestaff/requirements')">
+                        {{ __('Manage Requirements') }}
+                    </x-nav-link>
+                </div>
+                @endhasrole
+
+                <!--Finance Staff Dashboard Side Bar-->
+                @hasrole('Finance Staff')
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="{{ url('/dashboard') }}" :active="request()->routeIs('dashboard')">
+                        {{ __('Review Application') }}
+                    </x-nav-link>
+                </div>
+                @endhasrole
+
+                <!--Applicant Dashboard Side Bar-->
+                @hasrole('Applicant')
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="{{ url('/applicant/apply') }}" :active="request()->routeIs('/applicant/apply')">
+                        {{ __('Apply') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="{{ url('/applicant/vault') }}" :active="request()->routeIs('/applicant/vault')">
+                        {{ __('View Vaults') }}
+                    </x-nav-link>
+                </div>
+                @endhasrole
+            </div>
+        </div>
+        <div class="hidden sm:flex sm:items-center sm:ms-6">
+                <!-- Login Dropdown -->
+                <div class="ms-3 relative">
+                    <x-dropdown align="right" width="48">
+                        <x-slot name="trigger">
+                                <span class="inline-flex rounded-md">
+                                    <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-keep-blue dark:text-gray-400 bg-keep-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none focus:bg-gray-50 dark:focus:bg-gray-700 active:bg-gray-50 dark:active:bg-gray-700 transition ease-in-out duration-150">
+                                        Profile
+                                        <svg class="ms-2 -me-0.5 size-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                        </svg>
+                                    </button>
+                                </span>
+                        </x-slot>
+
+                        <x-slot name="content">
+                            <!-- Account Management -->
+                            <div class="block px-4 py-2 text-xs text-gray-400">
+                                {{ __('Manage Account') }}
+                            </div>
+
+                            <x-dropdown-link href="{{ route('profile.show') }}">
+                                {{ __('Profile') }}
+                            </x-dropdown-link>
+
+                            @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
+                                <x-dropdown-link href="{{ route('api-tokens.index') }}">
+                                    {{ __('API Tokens') }}
+                                </x-dropdown-link>
+                            @endif
+
+                            <div class="border-t border-gray-200 dark:border-gray-600"></div>
+
+                            <!-- Authentication -->
+                            <form method="POST" action="{{ route('logout') }}" x-data>
+                                @csrf
+
+                                <x-dropdown-link href="{{ route('logout') }}"
+                                         @click.prevent="$root.submit();">
+                                    {{ __('Log Out') }}
+                                </x-dropdown-link>
+                            </form>
+                        </x-slot>
+                    </x-dropdown>
                 </div>
             </div>
 
