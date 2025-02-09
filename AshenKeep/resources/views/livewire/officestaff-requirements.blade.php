@@ -2,7 +2,7 @@
     <div class="py-1 overflow-y-auto">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-2xl sm:rounded-lg p-6">
-                <div class="overflow-auto border border-gray-700 bg-[#102A45] text-white rounded-lg p-6">
+                <div class="overflow-auto border border-gray-700 bg-keep-blue text-white rounded-lg p-6">
                     <h2 class="text-2xl font-bold mb-4">Manage Requirements</h2>
                     
                     @if(session('success'))
@@ -13,7 +13,7 @@
                     
                     @foreach($groupedRequirements->groupBy('full_name') as $applicantName => $requirements)
                         <div class="mb-6" x-data="{ open: false }">
-                            <button @click="open = !open" class="text-lg font-semibold text-white bg-gray-700 hover:bg-gray-600 transition duration-300 p-3 rounded-lg w-full text-left shadow-md flex justify-between items-center">
+                            <button @click="open = !open" class="text-lg font-semibold text-black bg-keep-white hover:bg-keep-white p-3 rounded-lg w-full text-left shadow-md flex justify-between items-center">
                                 <span>{{ $applicantName }}</span>
                                 
                                 <div class="flex items-center gap-x-3">
@@ -31,31 +31,31 @@
 
                             <div x-show="open" x-cloak class="mt-4">
                                 <table class="table-auto w-full border-collapse border border-gray-200 mt-4">
-                                    <thead class="bg-gray-800 text-white">
+                                    <thead class="bg-keep-white text-black">
                                         <tr>
-                                            <th class="border border-gray-300 px-4 py-2">ID</th>
-                                            <th class="border border-gray-300 px-4 py-2">Type</th>
-                                            <th class="border border-gray-300 px-4 py-2">Files</th>
-                                            <th class="border border-gray-300 px-4 py-2">Date Submitted</th>
+                                            <th class="border border-gray-600 px-4 py-2">ID</th>
+                                            <th class="border border-gray-600 px-4 py-2">Type</th>
+                                            <th class="border border-gray-600 px-4 py-2">Files</th>
+                                            <th class="border border-gray-600 px-4 py-2">Date Submitted</th>
                                         </tr>
                                     </thead>
-                                    <tbody class="bg-gray-900 text-white">
+                                    <tbody class="bg-keep-white text-black">
                                         @foreach($requirements as $requirement)
-                                            <tr class="hover:bg-gray-700 transition duration-200">
-                                                <td class="border border-gray-300 px-4 py-2 text-white">
+                                            <tr class="hover:bg-keep-white transition duration-200">
+                                                <td class="border border-gray-600 px-4 py-2 text-black">
                                                     {{ $requirement->id }}
                                                 </td>
-                                                <td class="border border-gray-300 px-4 py-2 text-white">
+                                                <td class="border border-gray-600 px-4 py-2 text-black">
                                                     {{ ucfirst($requirement->requirement_type) }}
                                                 </td>
-                                                <td class="border border-gray-300 px-4 py-2 text-white">
+                                                <td class="border border-gray-600 px-4 py-2 text-black">
                                                     @if(is_array($requirement->files))
                                                         @foreach($requirement->files as $file)
                                                             <a href="{{ Storage::url($file) }}" target="_blank" class="text-blue-500 underline">View File</a><br>
                                                         @endforeach
                                                     @endif
                                                 </td>
-                                                <td class="border border-gray-300 px-4 py-2 text-white">
+                                                <td class="border border-gray-600 px-4 py-2 text-black">
                                                     {{ $requirement->created_at->format('Y-m-d H:i') }}
                                                 </td>
                                             </tr>
