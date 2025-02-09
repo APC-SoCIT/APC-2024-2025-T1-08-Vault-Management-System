@@ -15,7 +15,7 @@
     </head>
     <body class="font-sans antialiased">
         <x-banner />
-        <div class="min-h-screen bg-[#F6F2E9] dark:bg-gray-900">
+        <div class="min-h-screen bg-keep-white dark:bg-gray-900">
             @livewire('navigation-menu')
             <!-- Page Heading -->
             @if (isset($header))

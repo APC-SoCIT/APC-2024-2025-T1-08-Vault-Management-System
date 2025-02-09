@@ -1,5 +1,7 @@
 <x-app-layout>
+
     <div class="flex">
+
         <!-- Application Form -->
         <div class="flex-1">
             <div class="py-1">
@@ -24,7 +26,7 @@
                                     </div>
                                 </div>
                                 
-                                <form action="{{ route('applicant.savePage1') }}" method="POST">
+                                <form action="{{ route('applicant.savePage6') }}" method="POST">
                                     @csrf
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <div>
@@ -54,6 +56,26 @@
                                         <div>
                                             <label for="full_name" class="block font-medium text-gray-700">Provincial Address</label>
                                             <input type="text" id="provincial_address" name="provincial_address" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-yellow-400 focus:border-yellow-400" required>
+                                        </div>
+                                        <div>
+                                            <label for="full_name" class="block font-medium text-gray-700">Date of Birth</label>
+                                            <input type="date" id="date_of_birth" name="date_of_birth" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-yellow-400 focus:border-yellow-400" required>
+                                        </div>
+                                        <div>
+                                            <label for="email" class="block font-medium text-gray-700">Citizenship</label>
+                                            <input type="text" id="citizenship" name="citizenship" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-yellow-400 focus:border-yellow-400" required>
+                                        </div>
+                                        <div>
+                                            <label for="full_name" class="block font-medium text-gray-700">Place of Birth</label>
+                                            <input type="text" id="place_of_birth" name="place_of_birth" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-yellow-400 focus:border-yellow-400" required>
+                                        </div>
+                                        <div>
+                                            <label for="phone_number" class="block font-medium text-gray-700">Place of Catholic Baptism:</label>
+                                            <input type="text" id="place_of_catholic_baptism" name="place_of_catholic_baptism" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-yellow-400 focus:border-yellow-400" required>
+                                        </div>
+                                        <div>
+                                            <label for="full_name" class="block font-medium text-gray-700">Date of Catholic Baptism:</label>
+                                            <input type="date" id="date_of_catholic_baptism" name="date_of_catholic_baptism" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-yellow-400 focus:border-yellow-400" required>
                                         </div>
 
                                         <div class="w-full flex justify-center items-center col-span-1 md:col-span-2">
