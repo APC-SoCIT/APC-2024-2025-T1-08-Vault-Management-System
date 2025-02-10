@@ -2,7 +2,7 @@
     <div class="py-1 overflow-y-auto">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-2xl sm:rounded-lg p-6">
-                <div class="overflow-auto border border-gray-700 bg-[#102A45] text-white rounded-lg p-6">
+                <div class="overflow-auto border border-gray-700 bg-keep-blue text-white rounded-lg p-6">
                     
                     <!-- Section Header -->
                     <div class="flex justify-between items-center mb-6">
@@ -23,7 +23,7 @@
                     <!-- Loop through grouped requirements -->
                     @forelse($groupedRequirements->groupBy('full_name') as $full_name => $requirements)
                         <div class="mb-6" x-data="{ open: false }">
-                            <button @click="open = !open" class="text-lg font-semibold text-white bg-gray-700 hover:bg-gray-600 transition duration-300 p-3 rounded-lg w-full text-left shadow-md flex justify-between items-center">
+                            <button @click="open = !open" class="text-lg font-semibold text-black bg-keep-white hover:bg-keep-white p-3 rounded-lg w-full text-left shadow-md flex justify-between items-center">
                                 <span>{{ $full_name }}</span>
                                 <div class="flex items-center gap-x-3">
                                     <span class="font-semibold {{ $requirements->first()->status === 'approved' ? 'text-green-400' : 'text-red-400' }}">
@@ -40,7 +40,7 @@
                             
                             <div x-show="open" class="mt-4 border border-gray-500 rounded-lg overflow-hidden shadow-md">
                                 <table id="table-{{ Str::slug($full_name) }}" class="table-auto w-full border-collapse">
-                                    <thead class="bg-gray-800 text-white">
+                                    <thead class="bg-keep-white text-black">
                                         <tr>
                                             <th class="border border-gray-600 px-4 py-3">ID</th>
                                             <th class="border border-gray-600 px-4 py-3">Requirement Type</th>
@@ -48,9 +48,9 @@
                                             <th class="border border-gray-600 px-4 py-3">Submitted At</th>
                                         </tr>
                                     </thead>
-                                    <tbody class="bg-gray-900 text-white">
+                                    <tbody class="bg-keep-white text-black">
                                         @foreach($requirements as $index => $requirement)
-                                            <tr class="hover:bg-gray-700 transition duration-200">
+                                            <tr class="hover:bg-keep-white">
                                                 @if($index === 0)
                                                     <td class="border border-gray-600 px-4 py-3 font-semibold" rowspan="{{ count($requirements) }}">
                                                         {{ $requirement->id }}
