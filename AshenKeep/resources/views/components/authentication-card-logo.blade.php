@@ -1,5 +1,5 @@
 <a href="/">
-    <svg width="119" height="109" viewBox="0 0 119 109" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <svg width="119" height="200" viewBox="0 0 119 109" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <rect width="119" height="109" fill="url(#pattern0_69_40)"/>
         <defs>
             <pattern id="pattern0_69_40" patternContentUnits="objectBoundingBox" width="1" height="1">

@@ -2,15 +2,19 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Applicants extends Model
+class Apply extends Model
 {
-    protected $table = 'applicant';
+    use HasFactory;
+
+    // Define which fields are mass assignable
+    protected $table = 'applications';
     protected $fillable = [
         'full_name',
-        'user_id',
         'status',
+        'user_id',
         'permanent_address',
         'current_address',
         'provincial_address',
@@ -23,27 +27,17 @@ class Applicants extends Model
         'place_of_catholic_baptism',
         'date_of_catholic_baptism',
         'religious_organization_affiliated_with',
-        'donors_occupation',
-        'employers_name_or_business_name',
-        'business_address',
-        'employers_email_or_business_email_address',
-        'business_landline_number',
-        'business_mobile_number',
-        'position',
-        'years_in_employment_or_business',
         'spouses_name',
         'spouses_date_of_birth',
         'spouses_place_of_birth',
         'spouses_email_address',
         'spouses_landline_number',
         'spouses_mobile_number',
-        'fathers_name',
-        'fathers_email_address',
-        'fathers_landline_number',
-        'fathers_mobile_number',
-        'mothers_name',
-        'mothers_email_address',
-        'mothers_landline_number',
-        'mothers_mobile_number',
-    ];    
+    ];
+
+    // If you're using relationships, define them here, for example:
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
