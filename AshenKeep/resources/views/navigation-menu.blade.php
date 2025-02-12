@@ -71,7 +71,7 @@
                 <!--Applicant Dashboard Side Bar-->
                 @hasrole('Applicant')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ url('/applicant/apply') }}" :active="request()->routeIs('/applicant/apply')">
+                    <x-nav-link href="{{ route('applicant.application') }}" :active="request()->routeIs('applicant.application')">
                         {{ __('Apply') }}
                     </x-nav-link>
                 </div>

@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
                 'role' => 'Admin',
             ],
             [
-                'email' => 'staff@example.com',
+                'email' => 'kibzfibz@gmail.com',
                 'password' => 'password123',
                 'role' => 'Office Staff',
             ],

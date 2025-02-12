@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('applicantvaults', function (Blueprint $table) {
+        Schema::create('vaults', function (Blueprint $table) {
             $table->id();
             $table->string('vault_number')->unique();
             $table->decimal('price', 10, 2);
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }

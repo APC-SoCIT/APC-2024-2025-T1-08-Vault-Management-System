@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ApplicantController;
 use App\Http\Controllers\BeneficiaryController;
 use App\Http\Controllers\RequirementController;
+use App\Livewire\Application;
+use App\Livewire\OfficeStaffDashboard;
+use App\Http\Controllers\StaffApplyController;
 
 $url = config('app.url');
 URL::forceRootUrl($url);
@@ -101,7 +104,9 @@ Route::get('/officestaff/requirements', function () {
 })->middleware('auth');
 
 // User accessing Applicant page check
-Route::get('/applicant/apply', [ApplicantController::class, 'page1'])->name('applicant.page1');
+Route::get('/apply', function () {
+    return view('apply');
+})->name('applicant.application');
 
 
 Route::get('/applicant/requirements', function () {
@@ -147,7 +152,7 @@ Route::get('/apply/oops', function() {
     return view('oops'); 
 })->name('with.existing');
 
-Route::get('/officestaff/applications', [ApplicantController::class, 'index'])->name('officestaff.appliations');
+Route::get('/officestaff/applications', [StaffApplyController::class, 'index'])->name('officestaff.appliations');
 
 //Requirements
 Route::get('/applicant/requirements', [RequirementController::class, 'index'])->name('applicant_requirements');
