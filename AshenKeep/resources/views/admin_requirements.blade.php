@@ -1,5 +1,9 @@
 <x-app-layout>
-    <div class="flex-1">
-        <livewire:admin-requirements />
+    <div class="flex h-screen">
+        <x-side-navig-bar />
+        
+        <div class="flex-1 p-6 bg-keep-white">
+            <livewire:admin-requirements />
+        </div>
     </div>
 </x-app-layout>
