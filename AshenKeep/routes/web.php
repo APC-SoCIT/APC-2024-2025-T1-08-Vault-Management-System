@@ -9,6 +9,7 @@ use App\Http\Controllers\RequirementController;
 use App\Livewire\Application;
 use App\Livewire\OfficeStaffDashboard;
 use App\Http\Controllers\StaffApplyController;
+use App\Http\Controllers\VaultController;
 
 $url = config('app.url');
 URL::forceRootUrl($url);
@@ -163,3 +164,7 @@ Route::post('/officestaff/requirements/batch-update', [RequirementController::cl
 
 Route::get('/admin/requirements', [RequirementController::class, 'viewAdminRequirements'])->name('admin_requirements');
 Route::post('/admin/issue-proof/{applicantName}', [RequirementController::class, 'issueProofOwnership'])->name('issue_proof');
+
+//Vaults
+Route::get('/applicant/vault', [VaultController::class, 'viewApplicantVaults'])->name('applicant_vaults');
+Route::get('/admin/vault', [VaultController::class, 'viewAdminVaults'])->name('admin_vaults');
