@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AdminVault extends Model
+class Vault extends Model
 {
-    protected $table = 'admin_vaults'; 
+    protected $table = 'vaults'; 
 
     // Define the fillable fields for mass assignment
     protected $fillable = [

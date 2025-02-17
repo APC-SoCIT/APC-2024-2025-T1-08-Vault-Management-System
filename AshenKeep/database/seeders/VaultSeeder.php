@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\AdminVault;
+use App\Models\Vault;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -125,7 +125,7 @@ class VaultSeeder extends Seeder
                 $vault['urns_quantity'] = null;
             }
 
-            AdminVault::create($vault);
+            Vault::create($vault);
         }
     }
 }
