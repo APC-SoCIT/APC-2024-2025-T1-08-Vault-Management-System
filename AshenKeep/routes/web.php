@@ -131,22 +131,27 @@ Route::get('/applicant/submission', function () {
     return view('submission_requirements');
 })->middleware('auth');
 
-Route::post('/apply/save', [ApplicantController::class, 'savePage1'])->name('applicant.savePage1');
-Route::get('/applicant/step-2', [ApplicantController::class, 'page2'])->name('applicant.page2');
-Route::post('/apply/step-2/save', [ApplicantController::class, 'savePage2'])->name('applicant.savePage2');
-Route::get('/apply/step-3', [ApplicantController::class, 'page3'])->name('applicant.page3');
-Route::post('/apply/step-3/save', [ApplicantController::class, 'savePage3'])->name('applicant.savePage3');
-Route::get('/apply/step-4', [ApplicantController::class, 'page4'])->name('applicant.page4');
-Route::post('/apply/step-4/save', [ApplicantController::class, 'savePage4'])->name('applicant.savePage4');
-Route::get('/apply/step-5', [ApplicantController::class, 'page5'])->name('applicant.page5');
-Route::post('/apply/step-5/save', [ApplicantController::class, 'savePage5'])->name('applicant.savePage5');
-Route::get('/apply/step-6', [BeneficiaryController::class, 'page6'])->name('applicant.page6');
-Route::post('/apply/step-6/save', [BeneficiaryController::class, 'savePage6'])->name('applicant.savePage6');
-Route::get('/apply/step-7', [BeneficiaryController::class, 'page7'])->name('applicant.page7');
-Route::post('/apply/step-7/save', [BeneficiaryController::class, 'savePage7'])->name('applicant.savePage7');
-Route::get('/apply/step-8', [BeneficiaryController::class, 'page8'])->name('applicant.page8');
-Route::post('/apply/step-8/save', [BeneficiaryController::class, 'savePage8'])->name('applicant.savePage8');
-Route::get('/apply/success', [BeneficiaryController::class, 'success'])->name('applicant.success');
+Route::get('/apply/success', function() { 
+    $user = Auth::user();
+
+    // Explicit authentication check
+    if (!$user || !$user->hasRole('Applicant')) {
+        abort(403); // Forbidden
+    }
+    
+    return view('success'); 
+})->name('success');
+
+Route::get('/apply/oops', function() { 
+    $user = Auth::user();
+
+    // Explicit authentication check
+    if (!$user || !$user->hasRole('Applicant')) {
+        abort(403); // Forbidden
+    }
+    
+    return view('oops'); 
+})->name('with.existing');
 
 Route::get('/apply/oops', function() { 
     return view('oops'); 
