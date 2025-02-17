@@ -19,6 +19,7 @@ export default {
             colors: {
                 'keep-white': '#F6F2E9',
                 'keep-blue': '#102A45',
+                "keep-light-blue": "#254E7A",
                 'keep-yellow': '#FFCD39',
             }
         },
