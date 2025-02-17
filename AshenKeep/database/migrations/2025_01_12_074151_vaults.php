@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('admin_vaults', function (Blueprint $table) {
+        Schema::create('vaults', function (Blueprint $table) {
             $table->id();
             $table->string('vault_number')->unique();
             $table->string('location')->nullable();
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('admin_vaults');
+        Schema::dropIfExists('vaults');
     }
 };
