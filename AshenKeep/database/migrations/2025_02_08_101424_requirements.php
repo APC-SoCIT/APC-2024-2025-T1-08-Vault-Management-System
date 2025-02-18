@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('requirements', function (Blueprint $table) {
-            $table->id();
+            $table->id(); // Primary Key
+            $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
             $table->string('full_name');
             $table->string('requirement_type');
             $table->json('files')->nullable(); // Store file paths as a JSON array
