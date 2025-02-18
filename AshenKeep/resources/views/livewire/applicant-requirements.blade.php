@@ -1,12 +1,12 @@
 <div class="flex-1">
     <div class="py-1 overflow-y-auto">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-2xl sm:rounded-lg p-6">
-                <div class="overflow-auto border border-gray-700 bg-keep-blue text-white rounded-lg p-6">
+            <div class="bg-[#F6F2E9] dark:bg-gray-800 overflow-hidden shadow-2xl sm:rounded-lg p-6">
+                <div class="overflow-auto text-black rounded-lg p-6">
                     
                     <!-- Section Header -->
                     <div class="flex justify-between items-center mb-6">
-                        <h3 class="text-3xl font-bold text-white">Requirements</h3>
+                        <h3 class="text-3xl font-bold text-black">Requirements</h3>
                         <a href="{{ url('/applicant/submission') }}">
                             <x-apply-button class="bg-green-600 hover:bg-green-700 transition duration-300 text-white px-6 py-3 rounded-lg shadow-md">
                                 Submit Requirements
@@ -23,7 +23,7 @@
                     <!-- Loop through grouped requirements -->
                     @forelse($groupedRequirements->groupBy('full_name') as $full_name => $requirements)
                         <div class="mb-6" x-data="{ open: false }">
-                            <button @click="open = !open" class="text-lg font-semibold text-black bg-keep-white hover:bg-keep-white p-3 rounded-lg w-full text-left shadow-md flex justify-between items-center">
+                            <button @click="open = !open" class="text-lg font-semibold border border-gray-800 text-black bg-keep-white hover:bg-keep-white p-3 rounded-lg w-full text-left shadow-md flex justify-between items-center">
                                 <span>{{ $full_name }}</span>
                                 <div class="flex items-center gap-x-3">
                                     <span class="font-semibold {{ $requirements->first()->status === 'approved' ? 'text-green-400' : 'text-red-400' }}">
