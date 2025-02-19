@@ -19,4 +19,8 @@ class Vault extends Model
         'urns_quantity',
         'availability',
     ];
+    
+    protected $casts = [
+        'date_issued' => 'date',
+    ];
 }
