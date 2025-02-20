@@ -9,7 +9,8 @@ use App\Http\Controllers\RequirementController;
 use App\Livewire\Application;
 use App\Livewire\OfficeStaffDashboard;
 use App\Http\Controllers\StaffApplyController;
-use App\Http\Controllers\VaultController;
+use App\Http\Controllers\AdminVaultController;
+use App\Http\Controllers\ApplicantVaultController;
 
 $url = config('app.url');
 URL::forceRootUrl($url);
@@ -171,5 +172,5 @@ Route::get('/admin/requirements', [RequirementController::class, 'viewAdminRequi
 Route::post('/admin/issue-proof/{applicantName}', [RequirementController::class, 'issueProofOwnership'])->name('issue_proof');
 
 //Vaults
-Route::get('/applicant/vault', [VaultController::class, 'viewApplicantVaults'])->name('applicant_vaults');
-Route::get('/admin/vault', [VaultController::class, 'viewAdminVaults'])->name('admin_vaults');
+Route::get('/applicant/vault', [ApplicantVaultController::class, 'viewApplicantVaults'])->name('applicant_vaults');
+Route::get('/admin/vault', [AdminVaultController::class, 'viewAdminVaults'])->name('admin_vaults');
