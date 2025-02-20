@@ -36,8 +36,7 @@
                                 >
                                     <option value="" disabled selected>Select Requirement Type</option>
                                     <option value="Baptism">Baptism</option>
-                                    <option value="PSA">PSA</option>
-                                    <option value="Donation">Donation</option>
+                                    <option value="Goverment ID">Goverment ID</option>
                                     <option value="other">Other</option>
                                 </select>
                             </div>
