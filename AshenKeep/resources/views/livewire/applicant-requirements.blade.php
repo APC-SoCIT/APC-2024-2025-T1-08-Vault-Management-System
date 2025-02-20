@@ -64,7 +64,7 @@
                                                         @endforeach
                                                     @endif
                                                 </td>
-                                                <td class="border border-gray-600 px-4 py-3">{{ $requirement->created_at->format('Y-m-d H:i') }}</td>
+                                                <td class="border border-gray-600 px-4 py-3">{{ $requirement->created_at->timezone('Asia/Manila')->format('Y-m-d h:iA') }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
