@@ -1,8 +1,8 @@
 <div class="flex-1">
     <div class="py-1 overflow-y-auto">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-2xl sm:rounded-lg p-6">
-                <div class="overflow-auto border border-gray-700 bg-keep-blue text-white rounded-lg p-6">
+            <div class="bg-[#F6F2E9] dark:bg-gray-800 overflow-hidden shadow-2xl sm:rounded-lg p-6">
+                <div class="overflow-auto text-black rounded-lg p-6">
                     <h2 class="text-2xl font-bold mb-4">Issue Proof of Ownership</h2>
 
                     @if(session('success'))
@@ -14,7 +14,7 @@
                     @foreach($groupedRequirements->groupBy('full_name') as $applicantName => $requirements)
                         <div class="mb-6" x-data="{ open: false }">
                             <button @click="open = !open" 
-                                class="text-lg font-semibold text-black bg-keep-white hover:bg-keep-white p-3 rounded-lg w-full text-left shadow-md flex justify-between items-center">
+                                class="text-lg font-semibold border border-gray-800 text-black bg-keep-white hover:bg-keep-white p-3 rounded-lg w-full text-left shadow-md flex justify-between items-center">
                                 <span>{{ $applicantName }}</span>
                                 <div class="flex items-center gap-x-3">
                                     <span class="text-sm {{ $requirements->first()->status == 'pending' ? 'text-yellow-500' : ($requirements->first()->status == 'approved' ? 'text-green-500' : 'text-red-500') }}">

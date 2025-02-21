@@ -53,7 +53,10 @@ class Application extends Component
     public function mount()
     {
         // Automatically set the user_id to the authenticated user's ID
-        $this->user_id = auth()->id(); 
+        $this->user_id = auth()->id();
+    
+        // Automatically set the email to the authenticated user's email
+        $this->email = auth()->user()->email;
     }
 
     public function submitForm()

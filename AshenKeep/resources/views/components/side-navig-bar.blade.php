@@ -1,4 +1,4 @@
-<div x-data="{ open: false }" class="flex">
+<div x-data="{ open: false }" class="flex h-screen">
     
     <!-- Sidebar -->
     <div 
@@ -6,22 +6,22 @@
         class="w-64 bg-keep-yellow text-black font-semibold p-4 rounded-r-xl flex flex-col items-center fixed inset-y-0 left-0 sm:relative transition-transform duration-300 ease-in-out">
         
         <x-authentication-card-logo />
-        
-            <!-- Dashboard (Visible to Everyone) -->
-            <x-nav-link href="{{ url('/dashboard') }}" :active="request()->routeIs('/dashboard')" class="flex items-left gap-4 w-full">
-                <x-dashboard-icon />
-                <span>{{ __('Dashboard') }}</span>
-            </x-nav-link>
-        
+
+        <!-- Dashboard (Visible to Everyone) -->
+        <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" class="flex items-left gap-4 w-full">
+            <x-dashboard-icon />
+            <span>{{ __('Dashboard') }}</span>
+        </x-nav-link>
+
         <!-- Admin Dashboard Side Bar -->
         @hasrole('Admin')
             <div class="space-y-2 text-left">
-                <x-nav-link href="{{ url('/admin/requirements') }}" :active="request()->routeIs('/admin/requirements')" class="flex items-left gap-4">
+                <x-nav-link href="{{ url('/admin/requirements') }}" :active="request()->routeIs('admin.requirements')" class="flex items-left gap-4">
                     <x-review-icon />
                     {{ __( 'Review Application') }}
                 </x-nav-link>
 
-                <x-nav-link href="{{ url('/admin/vault') }}" :active="request()->routeIs('/admin/vault')" class="flex items-left gap-3">
+                <x-nav-link href="{{ url('/admin/vault') }}" :active="request()->routeIs('admin.vault')" class="flex items-left gap-3">
                     <x-vault-icon />
                     {{ __('Vaults') }}
                 </x-nav-link>
@@ -31,11 +31,11 @@
         <!-- Office Staff Dashboard Side Bar -->
         @hasrole('Office Staff')
             <div class="space-y-2 text-left">
-                <x-nav-link href="{{ url('/officestaff/applications') }}" :active="request()->routeIs('/officestaff/applications')" class="flex items-left gap-4">
+                <x-nav-link href="{{ url('/officestaff/applications') }}" :active="request()->routeIs('officestaff.applications')" class="flex items-left gap-4">
                     <x-managea-icon />
                     {{ __('Manage Applications') }}
                 </x-nav-link>
-                <x-nav-link href="{{ url('/officestaff/requirements') }}" :active="request()->routeIs('/officestaff/requirements')" class="flex items-left gap-4">
+                <x-nav-link href="{{ url('/officestaff/requirements') }}" :active="request()->routeIs('officestaff.requirements')" class="flex items-left gap-4">
                     <x-manager-icon />
                     {{ __('Manage Requirements') }}
                 </x-nav-link>
@@ -56,12 +56,12 @@
         @hasrole('Applicant')
             <div class="space-y-2 text-left">
                 <x-nav-link href="{{ route('applicant.application') }}" :active="request()->routeIs('applicant.application')" class="flex items-left gap-3">
-                <x-apply-icon />
+                    <x-apply-icon />
                     {{ __('Apply') }}
                 </x-nav-link>
 
-                <x-nav-link href="{{ url('/applicant/vault') }}" :active="request()->routeIs('/applicant/vault')" class="flex items-left gap-3">
-                <x-vault-icon />
+                <x-nav-link href="{{ url('/applicant/vault') }}" :active="request()->routeIs('applicant.vault')" class="flex items-left gap-3">
+                    <x-vault-icon />
                     {{ __('View Vaults') }}
                 </x-nav-link>
 
@@ -76,6 +76,19 @@
                 </x-nav-link>
             </div>
         @endhasrole
+
+        <!-- Common Links -->
+        <x-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
+            {{ __('Profile') }}
+        </x-nav-link>
+
+        <form method="POST" action="{{ route('logout') }}" x-data>
+            @csrf
+            <x-nav-link href="{{ route('logout') }}" @click.prevent="$root.submit();">
+                {{ __('Log Out') }}
+            </x-nav-link>
+        </form>
+    </div>
 
     <!-- Hamburger Button -->
     <div class="sm:hidden fixed top-4 left-4 z-50">

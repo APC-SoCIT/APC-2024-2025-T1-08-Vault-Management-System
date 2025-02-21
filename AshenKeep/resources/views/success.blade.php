@@ -3,7 +3,7 @@
     <div class="flex">
         <!-- Sidebar -->
         <div class="hidden sm:flex">
-            <x-dashboard-side-bar />
+            <x-side-navig-bar />
         </div>
 
         <!-- Main Content -->
