@@ -21,19 +21,19 @@
                     <table class="table table-bordered w-full rounded-lg overflow-hidden">
                         <thead class="bg-[#102A45] text-white text-lg font-semibold rounded-t-lg">
                             <tr>
-                                <th class="p-2">Vault Number</th>
-                                <th class="p-2">Location</th>
-                                <th class="p-2">Availability</th>
-                                <th class="p-2">Price</th>
+                                <th class="p-6">Vault Number</th>
+                                <th class="p-6">Location</th>
+                                <th class="p-6">Availability</th>
+                                <th class="p-6">Price</th>
                             </tr>
                         </thead>
-                        <tbody id="vaultTableBody" class="bg-white border border-gray-300 text-blue-900 shadow-lg rounded-xl p-6 mt-6">
+                        <tbody id="vaultTableBody" class="bg-white border border-gray-300 text-blue-900 shadow-lg rounded-xl p-6 mt-6 gap-3">
                             @foreach ($vaults as $vault)
                                 <tr>
-                                    <td class="text-center">{{ $vault->vault_number }}</td>
-                                    <td class="text-center">{{ $vault->location }}</td>
-                                    <td class="text-center">{{ $vault->availability }}</td>
-                                    <td class="text-center">${{ number_format($vault->price, 2) }}</td>
+                                    <td class="text-center gap-3">{{ $vault->vault_number }}</td>
+                                    <td class="text-center gap-3">{{ $vault->location }}</td>
+                                    <td class="text-center gap-3">{{ $vault->availability }}</td>
+                                    <td class="text-center gap-3">${{ number_format($vault->price, 2) }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

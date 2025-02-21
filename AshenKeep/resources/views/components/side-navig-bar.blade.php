@@ -7,57 +7,78 @@
         
         <x-authentication-card-logo />
 
-        <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-            {{ __('Dashboard') }}
+        <!-- Dashboard (Visible to Everyone) -->
+        <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" class="flex items-left gap-4 w-full">
+            <x-dashboard-icon />
+            <span>{{ __('Dashboard') }}</span>
         </x-nav-link>
 
         <!-- Admin Dashboard Side Bar -->
         @hasrole('Admin')
-            <x-nav-link href="{{ url('/admin/requirements') }}" :active="request()->routeIs('/admin/requirements')">
-                {{ __('Review Application') }}
-            </x-nav-link>
-            <x-nav-link href="{{ url('/admin/vault') }}" :active="request()->routeIs('/admin/vault')">
-                {{ __('Vaults') }}
-            </x-nav-link>
+            <div class="space-y-2 text-left">
+                <x-nav-link href="{{ url('/admin/requirements') }}" :active="request()->routeIs('admin.requirements')" class="flex items-left gap-4">
+                    <x-review-icon />
+                    {{ __( 'Review Application') }}
+                </x-nav-link>
+
+                <x-nav-link href="{{ url('/admin/vault') }}" :active="request()->routeIs('admin.vault')" class="flex items-left gap-3">
+                    <x-vault-icon />
+                    {{ __('Vaults') }}
+                </x-nav-link>
+            </div>
         @endhasrole
 
         <!-- Office Staff Dashboard Side Bar -->
         @hasrole('Office Staff')
-            <x-nav-link href="{{ url('/officestaff/applications') }}" :active="request()->routeIs('/officestaff/applications')">
-                {{ __('Manage Applications') }}
-            </x-nav-link>
-            <x-nav-link href="{{ url('/officestaff/requirements') }}" :active="request()->routeIs('/officestaff/requirements')">
-                {{ __('Manage Requirements') }}
-            </x-nav-link>
+            <div class="space-y-2 text-left">
+                <x-nav-link href="{{ url('/officestaff/applications') }}" :active="request()->routeIs('officestaff.applications')" class="flex items-left gap-4">
+                    <x-managea-icon />
+                    {{ __('Manage Applications') }}
+                </x-nav-link>
+                <x-nav-link href="{{ url('/officestaff/requirements') }}" :active="request()->routeIs('officestaff.requirements')" class="flex items-left gap-4">
+                    <x-manager-icon />
+                    {{ __('Manage Requirements') }}
+                </x-nav-link>
+            </div>
         @endhasrole
 
         <!-- Finance Staff Dashboard Side Bar -->
         @hasrole('Finance Staff')
-            <x-nav-link href="{{ url('/dashboard') }}" :active="request()->routeIs('dashboard')">
-                {{ __('Review Application') }}
-            </x-nav-link>
+            <div class="space-y-2 text-left">
+                <x-nav-link href="{{ url('/dashboard') }}" :active="request()->routeIs('dashboard')" class="flex items-left gap-4">
+                    <x-review-icon />
+                    {{ __('Review Application') }}
+                </x-nav-link>
+            </div>
         @endhasrole
 
         <!-- Applicant Dashboard Side Bar -->
         @hasrole('Applicant')
-            <x-nav-link href="{{ route('applicant.application') }}" :active="request()->routeIs('applicant.application')">
-                {{ __('Apply') }}
-            </x-nav-link>
+            <div class="space-y-2 text-left">
+                <x-nav-link href="{{ route('applicant.application') }}" :active="request()->routeIs('applicant.application')" class="flex items-left gap-3">
+                    <x-apply-icon />
+                    {{ __('Apply') }}
+                </x-nav-link>
 
-            <x-nav-link href="{{ url('/applicant/vault') }}" :active="request()->routeIs('/applicant/vault')">
-                {{ __('View Vaults') }}
-            </x-nav-link>
+                <x-nav-link href="{{ url('/applicant/vault') }}" :active="request()->routeIs('applicant.vault')" class="flex items-left gap-3">
+                    <x-vault-icon />
+                    {{ __('View Vaults') }}
+                </x-nav-link>
+
+                <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" class="flex items-left gap-3">
+                    <x-about-icon />
+                    {{ __('About Us') }}
+                </x-nav-link>
+
+                <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" class="flex items-left gap-3">
+                    <x-faq-icon />
+                    {{ __('FAQs') }}
+                </x-nav-link>
+            </div>
         @endhasrole
 
-        <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-            {{ __('About Us') }}
-        </x-nav-link>
-
-        <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-            {{ __('FAQs') }}
-        </x-nav-link>
-
-        <x-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('dashboard')">
+        <!-- Common Links -->
+        <x-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
             {{ __('Profile') }}
         </x-nav-link>
 
@@ -80,5 +101,4 @@
             </svg>
         </button>
     </div>
-
 </div>
