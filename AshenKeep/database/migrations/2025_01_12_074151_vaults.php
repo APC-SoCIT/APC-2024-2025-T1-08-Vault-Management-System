@@ -16,10 +16,8 @@ return new class extends Migration
             $table->string('vault_number')->unique();
             $table->string('location')->nullable();
             $table->unsignedBigInteger('vault_owner_id')->nullable();
-            $table->string('owner')->nullable();
             $table->date('date_issued')->nullable();
-            $table->integer('urns_quantity')->nullable();
-            $table->string('availability')->default('Unavailable');
+            $table->string('status')->default('available');
             $table->decimal('price', 10, 2)->nullable();
             $table->timestamps();
         });

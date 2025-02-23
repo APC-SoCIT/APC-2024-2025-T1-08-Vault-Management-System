@@ -10,7 +10,7 @@ class Apply extends Model
     use HasFactory;
 
     // Define which fields are mass assignable
-    protected $table = 'applications';
+    protected $table = 'application_first_step';
     protected $fillable = [
         'full_name',
         'status',
@@ -27,12 +27,7 @@ class Apply extends Model
         'place_of_catholic_baptism',
         'date_of_catholic_baptism',
         'religious_organization_affiliated_with',
-        'spouses_name',
-        'spouses_date_of_birth',
-        'spouses_place_of_birth',
-        'spouses_email_address',
-        'spouses_landline_number',
-        'spouses_mobile_number',
+        'vault_id',
     ];
 
     // If you're using relationships, define them here, for example:

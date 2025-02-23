@@ -3,14 +3,14 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\ApplicantController;
 use App\Http\Controllers\BeneficiaryController;
 use App\Http\Controllers\RequirementController;
-use App\Livewire\Application;
 use App\Livewire\OfficeStaffDashboard;
 use App\Http\Controllers\StaffApplyController;
 use App\Http\Controllers\AdminVaultController;
 use App\Http\Controllers\ApplicantVaultController;
+use App\Http\Controllers\ApplicationFirstStepController;
+
 
 $url = config('app.url');
 URL::forceRootUrl($url);
@@ -106,9 +106,9 @@ Route::get('/officestaff/requirements', function () {
 })->middleware('auth');
 
 // User accessing Applicant page check
-Route::get('/apply', function () {
-    return view('apply');
-})->name('applicant.application');
+Route::get('/apply', [ApplicationFirstStepController::class, 'create'])->name('applicant.application');
+
+Route::post('/apply', [ApplicationFirstStepController::class, 'store'])->name('applications.store');
 
 
 Route::get('/applicant/requirements', function () {
@@ -132,32 +132,6 @@ Route::get('/applicant/submission', function () {
 
     return view('submission_requirements');
 })->middleware('auth');
-
-Route::get('/apply/success', function() { 
-    $user = Auth::user();
-
-    // Explicit authentication check
-    if (!$user || !$user->hasRole('Applicant')) {
-        abort(403); // Forbidden
-    }
-    
-    return view('success'); 
-})->name('success');
-
-Route::get('/apply/oops', function() { 
-    $user = Auth::user();
-
-    // Explicit authentication check
-    if (!$user || !$user->hasRole('Applicant')) {
-        abort(403); // Forbidden
-    }
-    
-    return view('oops'); 
-})->name('with.existing');
-
-Route::get('/apply/oops', function() { 
-    return view('oops'); 
-})->name('with.existing');
 
 Route::get('/officestaff/applications', [StaffApplyController::class, 'index'])->name('officestaff.appliations');
 
