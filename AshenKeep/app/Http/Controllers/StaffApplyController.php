@@ -13,7 +13,4 @@ class StaffApplyController extends Controller
         return view('office-staff-application', compact('applications'));
     }
 
-     /**
-     * Show the details of a specific patient.
-     */
 }

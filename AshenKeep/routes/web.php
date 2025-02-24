@@ -105,11 +105,10 @@ Route::get('/officestaff/requirements', function () {
     return view('officestaff_requirements');
 })->middleware('auth');
 
-// User accessing Applicant page check
+// User accessing Applicant page
 Route::get('/apply', [ApplicationFirstStepController::class, 'create'])->name('applicant.application');
 
 Route::post('/apply', [ApplicationFirstStepController::class, 'store'])->name('applications.store');
-
 
 Route::get('/applicant/requirements', function () {
     $user = Auth::user();

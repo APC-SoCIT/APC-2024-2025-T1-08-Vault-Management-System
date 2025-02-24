@@ -1,4 +1,4 @@
-<div x-data="{ open: false }" class="flex h-screen">
+<div x-data="{ open: false }" class="flex">
     <!-- Sidebar -->
     <div 
         :class="open ? 'translate-x-0' : '-translate-x-full sm:translate-x-0'" 
