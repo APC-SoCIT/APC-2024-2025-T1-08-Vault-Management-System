@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class FourthApply extends Model
 {
     use HasFactory;
 
-    protected $table = 'fourthapply';
+    protected $table = 'fourth_apply';
 
     protected $fillable = [
         'user_id',

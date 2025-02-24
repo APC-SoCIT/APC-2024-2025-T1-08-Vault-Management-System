@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class SecondApply extends Model
 {
-    protected $table = 'secondapply';
+    use HasFactory;
+
+    protected $table = 'second_apply';
     protected $fillable = [
         'user_id',
         'permanent_address',

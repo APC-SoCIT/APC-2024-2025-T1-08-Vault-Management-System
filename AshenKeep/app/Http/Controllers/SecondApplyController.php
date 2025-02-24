@@ -8,8 +8,10 @@ use Illuminate\Support\Facades\Auth;
 
 class SecondApplyController extends Controller
 {
-    public function index()
+    public function create()
     {
+        $secondapplys = SecondApply::all();
+        return view('second-apply', compact('secondapplys'));
         
     }
 
@@ -31,6 +33,6 @@ class SecondApplyController extends Controller
             'status' => 'pending',
         ]);
 
-        return redirect()->route('applications.index')->with('success', 'Application submitted successfully.');
+        return view('success');
     }
 }

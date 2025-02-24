@@ -8,7 +8,7 @@
                 <div class="py-1">
                     <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
                         <div class="overflow-hidden sm:rounded-lg p-6">
-                            <form wire:submit.prevent="submitForm" class="space-y-6">
+                            <form method="POST" action="{{ route('fourth-apply') }}" class="space-y-6">
                                 @csrf
 
                                 <!-- Spouse Information -->
@@ -89,6 +89,13 @@
                                     <button type="submit" class="bg-keep-blue text-white w-full px-6 py-2 rounded-lg hover:bg-keep-yellow">Submit</button>
                                 </div>
                             </form>
+
+                            <!-- Success Message -->
+                            @if (session('success'))
+                                <div class="mt-4 text-green-600 font-semibold text-center">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>

@@ -8,9 +8,10 @@ use Illuminate\Support\Facades\Auth;
 
 class FourthApplyController extends Controller
 {
-    public function index()
+    public function create()
     {
-        return FourthApply::all();
+        $fourthapplys = FourthApply::all();
+        return view('fourth-apply', compact('fourthapplys'));
     }
 
     /**
@@ -36,7 +37,7 @@ class FourthApplyController extends Controller
             'status' => 'nullable|string|max:50',
         ]);
 
-        $application = FourthApply::create([
+        $fourthapplys = FourthApply::create([
             'user_id' => Auth::id(),
             'spouses_name' => $request->spouses_name,
             'spouses_date_of_birth' => $request->spouses_date_of_birth,
@@ -54,5 +55,8 @@ class FourthApplyController extends Controller
             'mothers_mobile_number' => $request->mothers_mobile_number,
             'status' => 'pending',
         ]);
+
+        return view('success');
+    }
 
 }
