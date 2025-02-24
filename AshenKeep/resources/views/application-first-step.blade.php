@@ -7,7 +7,7 @@
     <div class="py-1">
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
             <div class="overflow-hidden sm:rounded-lg p-6">
-                <form method="POST" route="{{ route('applications.store') }}" class="space-y-6">
+                <form method="POST" route="{{ route('applications.store') }}" class="space-y-1">
                     @csrf
                     
                     <!-- Personal Information -->
@@ -75,7 +75,7 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
                             <div>
                                 <label for="vault_id">Choose Vault:</label>
-                                <select name="vault_id">
+                                <select name="vault_id" class="w-full border p-2 rounded-lg" required>
                                 <option value="">Select a vault</option>
                                 @foreach($vaults as $vault)
                                     <option value="{{ $vault->id }}">{{ $vault->id }}</option>
@@ -88,7 +88,7 @@
                     
 
                     <!-- Submit Button -->
-                    <div class="mt-4 text-center sticky bottom-4">
+                    <div class="mt-4 text-center sticky bottom-4 pt-5">
                         <button type="submit" class="bg-keep-blue text-white w-full px-6 py-2 rounded-lg hover:bg-keep-yellow">Submit</button>
                     </div>
                 </form>
