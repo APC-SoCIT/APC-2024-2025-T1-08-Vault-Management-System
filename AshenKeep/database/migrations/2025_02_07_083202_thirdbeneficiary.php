@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('thirdbeneficiary', function (Blueprint $table) {
             $table->id();  // Primary key
-            $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
 
             // Personal Details
             $table->string('full_name');

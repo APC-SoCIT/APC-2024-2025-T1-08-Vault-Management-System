@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('permanent_address');
             $table->string('current_address');
             $table->string('provincial_address');
-            $table->string('status')->default('pending');
+            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
 
             $table->timestamps();
         });
