@@ -146,10 +146,15 @@ Route::get('/applicant/submission', function () {
 })->middleware('auth');
 
 Route::get('/officestaff/applications', [StaffApplyController::class, 'index'])->name('officestaff.appliations');
-Route::get('/second-apply', [SecondApplyController::class, 'create'])->name('second-apply.create');
-Route::post('/second-apply', [SecondApplyController::class, 'store'])->name('second-apply');
-Route::get('/fourth-apply', [FourthApplyController::class, 'create'])->name('fourth-apply.create');
-Route::post('/fourth-apply', [FourthApplyController::class, 'store'])->name('fourth-apply');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/second-apply', [SecondApplyController::class, 'create'])->name('second-apply.create');
+    Route::post('/second-apply', [SecondApplyController::class, 'store'])->name('second-apply.store');
+});
+Route::middleware(['auth'])->group(function () {
+    Route::get('/fourth-apply', [FourthApplyController::class, 'create'])->name('fourth-apply.create');
+    Route::post('/fourth-apply', [FourthApplyController::class, 'store'])->name('fourth-apply');
+});
+
 
 //Requirements
 Route::get('/applicant/requirements', [RequirementController::class, 'index'])->name('applicant_requirements');
