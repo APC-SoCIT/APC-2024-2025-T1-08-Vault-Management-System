@@ -4,12 +4,14 @@
     $hasSecondStep = \App\Models\SecondApply::where('user_id', $user->id)->exists();
     $hasThirdStep = \App\Models\ThirdApply::where('user_id', $user->id)->exists();
     $hasFourthStep = \App\Models\FourthApply::where('user_id', $user->id)->exists();
+    $hasFifthStep = \App\Models\Beneficiary::where('user_id', $user->id)->exists();
 
     $steps = [
         1 => ['title' => 'Personal Information', 'enabled' => !$hasFirstStep, 'completed' => $hasFirstStep, 'route' => 'applications.create'],
         2 => ['title' => 'Address Information', 'enabled' => $hasFirstStep && !$hasSecondStep, 'completed' => $hasSecondStep, 'route' => 'second-apply.create'],
         3 => ['title' => 'Occupation Information', 'enabled' => !$hasSecondStep && !$hasThirdStep, 'completed' => $hasThirdStep, 'route' => 'third-apply.create'],
         4 => ['title' => 'Spouse and Parents Information', 'enabled' => !$hasSecondStep && $hasThirdStep, 'completed' => $hasFourthStep, 'route' => 'fourth-apply.create'],
+        5 => ['title' => 'Beneficaries Information', 'enabled' => !$hasSecondStep && $hasThirdStep, 'completed' => $hasFifthStep, 'route' => 'fifth-apply.create'],
     ];
 @endphp
 

@@ -42,7 +42,7 @@ class ThirdApplyController extends Controller
             'business_landline_number' => 'nullable|string|max:20',
             'business_mobile_number' => 'nullable|string|max:20',
             'position' => 'nullable|string|max:255',
-            'years_in_employment_or_business' => 'nullable|numeric',
+            'years_in_employment_or_business' => 'nullable|string|max:255',
         ]);
 
         $validatedData['user_id'] = $user->id;
