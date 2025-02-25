@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('fourthapply', function (Blueprint $table) {
+        Schema::create('fourth_apply', function (Blueprint $table) {
             $table->id(); // Primary Key
             $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
 
@@ -35,6 +35,7 @@ return new class extends Migration
             $table->string('mothers_mobile_number')->nullable();
 
             $table->string('status')->default('pending');
+            $table->timestamps();
         });
     }
 
@@ -43,6 +44,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('fourth-apply');
+        Schema::dropIfExists('fourth_apply');
     }
 };

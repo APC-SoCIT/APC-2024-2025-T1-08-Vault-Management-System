@@ -11,13 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('secondapply', function (Blueprint $table) {
+        Schema::create('second_apply', function (Blueprint $table) {
             $table->id(); // Primary Key
             $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
             $table->string('permanent_address');
             $table->string('current_address');
             $table->string('provincial_address');
             $table->string('status')->default('pending');
+
+            $table->timestamps();
         });
     }
 
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('second-apply');
+        Schema::dropIfExists('second_apply');
     }
 };
