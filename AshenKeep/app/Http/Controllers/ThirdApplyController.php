@@ -50,6 +50,6 @@ class ThirdApplyController extends Controller
 
         ThirdApply::create($validatedData);
 
-        return view('success');
+        return view('apply-choice')->with('success', 'Application submitted successfully.');
     }
 }

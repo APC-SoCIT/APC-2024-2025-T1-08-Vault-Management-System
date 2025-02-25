@@ -25,6 +25,12 @@
                 </div>
             @endif
 
+            @if (session('success'))
+                <div class="mt-4 text-green-600 font-semibold text-center">
+                    {{ session('success') }}
+                </div>
+            @endif
+
             <!-- CARDS -->
             <div class="flex gap-x-6 w-full max-w-5xl items-center justify-center">
                 @foreach ($steps as $step => $data)

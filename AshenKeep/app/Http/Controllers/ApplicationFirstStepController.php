@@ -54,6 +54,6 @@ class ApplicationFirstStepController extends Controller
 
         Apply::create($validatedData);
 
-        return view('success');
+        return view('apply-choice')->with('success', 'Application submitted successfully.');
     }
 }
