@@ -107,12 +107,7 @@ Route::get('/officestaff/requirements', function () {
     return view('officestaff_requirements');
 })->middleware('auth');
 
-// User accessing Applicant page
-Route::get('/apply', [ApplicationFirstStepController::class, 'create'])->name('applicant.application');
-
-Route::post('/apply', [ApplicationFirstStepController::class, 'store'])->name('applications.store');
-
-Route::get('/applicant/requirements', function () {
+Route::get('/apply', function () {
     $user = Auth::user();
 
     // Explicit authentication check
@@ -120,8 +115,24 @@ Route::get('/applicant/requirements', function () {
         abort(403); // Forbidden
     }
 
-    return view('applicant_requirements');
-})->middleware('auth');
+    return view('apply-choice');
+})->middleware('auth')->name('applicant.application');
+
+// User accessing Applicant page
+Route::get('/first-apply', [ApplicationFirstStepController::class, 'create'])->name('applications.create');
+
+Route::post('/first-apply', [ApplicationFirstStepController::class, 'store'])->name('applications.store');
+
+Route::get('/with-existing', function () {
+    $user = Auth::user();
+
+    // Explicit authentication check
+    if (!$user || !$user->hasRole('Applicant')) {
+        abort(403); // Forbidden
+    }
+
+    return view('oops');
+})->middleware('auth')->name('with.existing');
 
 Route::get('/applicant/submission', function () {
     $user = Auth::user();
