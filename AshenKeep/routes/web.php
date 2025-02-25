@@ -128,6 +128,10 @@ Route::get('/third-apply', [ThirdApplyController::class, 'create'])->name('third
 
 Route::post('/third-apply', [ThirdApplyController::class, 'store'])->name('third-apply.store');
 
+Route::get('/fifth-apply', [BeneficiaryController::class, 'create'])->name('fifth-apply.create');
+
+Route::post('/fifth-apply', [BeneficiaryController::class, 'store'])->name('fifth-apply.store');
+
 Route::get('/with-existing', function () {
     $user = Auth::user();
 

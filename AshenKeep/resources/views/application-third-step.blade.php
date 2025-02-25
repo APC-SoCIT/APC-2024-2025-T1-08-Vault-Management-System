@@ -30,7 +30,7 @@
 
                         <div>
                             <label for="place_of_birth" class="block text-sm font-medium">Employer or Business Email</label>
-                            <input type="text" name="employers_email_or_business_email_address" class="w-full border p-2 rounded-lg" required>
+                            <input type="email" name="employers_email_or_business_email_address" class="w-full border p-2 rounded-lg" required>
                         </div>
 
                         <div>
