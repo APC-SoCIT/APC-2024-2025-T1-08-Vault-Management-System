@@ -10,6 +10,8 @@ use App\Http\Controllers\StaffApplyController;
 use App\Http\Controllers\AdminVaultController;
 use App\Http\Controllers\ApplicantVaultController;
 use App\Http\Controllers\ApplicationFirstStepController;
+use App\Http\Controllers\SecondApplyController;
+use App\Http\Controllers\FourthApplyController;
 
 
 $url = config('app.url');
@@ -105,12 +107,7 @@ Route::get('/officestaff/requirements', function () {
     return view('officestaff_requirements');
 })->middleware('auth');
 
-// User accessing Applicant page
-Route::get('/apply', [ApplicationFirstStepController::class, 'create'])->name('applicant.application');
-
-Route::post('/apply', [ApplicationFirstStepController::class, 'store'])->name('applications.store');
-
-Route::get('/applicant/requirements', function () {
+Route::get('/apply', function () {
     $user = Auth::user();
 
     // Explicit authentication check
@@ -118,8 +115,24 @@ Route::get('/applicant/requirements', function () {
         abort(403); // Forbidden
     }
 
-    return view('applicant_requirements');
-})->middleware('auth');
+    return view('apply-choice');
+})->middleware('auth')->name('applicant.application');
+
+// User accessing Applicant page
+Route::get('/first-apply', [ApplicationFirstStepController::class, 'create'])->name('applications.create');
+
+Route::post('/first-apply', [ApplicationFirstStepController::class, 'store'])->name('applications.store');
+
+Route::get('/with-existing', function () {
+    $user = Auth::user();
+
+    // Explicit authentication check
+    if (!$user || !$user->hasRole('Applicant')) {
+        abort(403); // Forbidden
+    }
+
+    return view('oops');
+})->middleware('auth')->name('with.existing');
 
 Route::get('/applicant/submission', function () {
     $user = Auth::user();
@@ -133,6 +146,10 @@ Route::get('/applicant/submission', function () {
 })->middleware('auth');
 
 Route::get('/officestaff/applications', [StaffApplyController::class, 'index'])->name('officestaff.appliations');
+Route::get('/second-apply', [SecondApplyController::class, 'create'])->name('second-apply.create');
+Route::post('/second-apply', [SecondApplyController::class, 'store'])->name('second-apply');
+Route::get('/fourth-apply', [FourthApplyController::class, 'create'])->name('fourth-apply.create');
+Route::post('/fourth-apply', [FourthApplyController::class, 'store'])->name('fourth-apply');
 
 //Requirements
 Route::get('/applicant/requirements', [RequirementController::class, 'index'])->name('applicant_requirements');

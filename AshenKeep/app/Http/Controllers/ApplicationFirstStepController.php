@@ -10,19 +10,32 @@ use Illuminate\Support\Facades\Auth;
 class ApplicationFirstStepController extends Controller
 {
     public function create()
-{
-    $user = Auth::user();
-    // Ensure the user is authenticated
-    if (!$user || !$user->hasRole('Applicant')) {
-        abort(403); // Forbidden
-    }
+    {
+        $user = Auth::user();
+        
+        // Ensure the user is authenticated and has the 'Applicant' role
+        if (!$user || !$user->hasRole('Applicant')) {
+            abort(403); // Forbidden
+        }
+        
+        // Check if the user already has an application
+        if (Apply::where('user_id', $user->id)->exists()) {
+            return redirect()->back()->with('error', 'You are already done with that step.');
+        }
 
-    $vaults = Vault::all();
-    return view('application-first-step', compact('vaults'));
-}
+        $vaults = Vault::all();
+        return view('application-first-step', compact('vaults'));
+    }
 
     public function store(Request $request)
     {
+        $user = Auth::user();
+        
+        // Ensure the user can only submit one application
+        if (Apply::where('user_id', $user->id)->exists()) {
+            return redirect()->back()->with('error', 'You have already submitted an application.');
+        }
+
         $validatedData = $request->validate([
             'full_name' => 'required|string|max:255',
             'email' => 'required|email|unique:application_first_step,email',
@@ -36,7 +49,7 @@ class ApplicationFirstStepController extends Controller
             'vault_id' => 'required|exists:vaults,id', // Ensure the vault exists
         ]);
 
-        $validatedData['user_id'] = auth()->id();
+        $validatedData['user_id'] = $user->id;
         $validatedData['status'] = 'pending';
 
         Apply::create($validatedData);
