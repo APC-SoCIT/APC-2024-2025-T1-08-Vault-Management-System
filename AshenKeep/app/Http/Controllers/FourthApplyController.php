@@ -42,7 +42,7 @@ class FourthApplyController extends Controller
             ]);
         }
 
-        return redirect()->back()->with('success', 'Application submitted successfully.');
+        return view('apply-choice')->with('success', 'Application submitted successfully.');
     }
     
 }

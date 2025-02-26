@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Requirement;
+use App\Models\Apply;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,12 +13,17 @@ class RequirementController extends Controller
     public function create()
     {
         $user = Auth::user();
-    
-        // Fetch the full name from application_first_step
-        $applicant = \App\Models\Apply::where('user_id', $user->id)->first();
-    
+
+        // Ensure user is authenticated and has the 'Applicant' role
+        if (!$user || !$user->hasRole('Applicant')) {
+            abort(403); // Forbidden
+        }
+
+        // Fetch the full name from the 'Apply' model
+        $applicant = Apply::where('user_id', $user->id)->first();
+
         return view('submission_requirements', [
-            'full_name' => $applicant ? $applicant->full_name : '' // Pass full name or empty string
+            'full_name' => $applicant?->full_name ?? '' // Use null-safe operator
         ]);
     }
     /**
