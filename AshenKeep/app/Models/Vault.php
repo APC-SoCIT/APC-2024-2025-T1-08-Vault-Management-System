@@ -14,8 +14,10 @@ class Vault extends Model
         'price',
         'location',
         'vault_owner_id',
+        'owner',
         'date_issued',
-        'status',
+        'urns_quantity',
+        'availability',
     ];
     
     protected $casts = [

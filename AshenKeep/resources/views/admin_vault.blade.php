@@ -2,7 +2,7 @@
     <div class="flex h-screen">
         <x-side-navig-bar />
 
-        <div class="flex-1 p-6 bg-keep-white">
+        <div class="flex-1 p-6 item-center bg-keep-white">
             <livewire:admin-vaults />
         </div>
     </div>

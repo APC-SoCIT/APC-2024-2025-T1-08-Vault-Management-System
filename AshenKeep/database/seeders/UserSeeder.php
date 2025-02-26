@@ -2,12 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
 
 class UserSeeder extends Seeder
 {
@@ -36,15 +34,22 @@ class UserSeeder extends Seeder
                 'email' => 'miyabeken0@gmail.com',
                 'password' => 'password123',
                 'role' => 'Applicant',
+            ],
+            [
+                'email' => 'nandayo992@gmail.com',
+                'password' => 'password123',
+                'role' => 'Applicant',
             ]
         ];
 
-        foreach($users as $user) {
-            $created_user = User::create([
-                'email' => $user['email'],
-                'password' => Hash::make($user['password']),
-            ]);
+        foreach ($users as $user) {
+            // Check if the user already exists, otherwise create it
+            $created_user = User::firstOrCreate(
+                ['email' => $user['email']], // Look for the email
+                ['password' => Hash::make($user['password'])] // Create with this password if the user doesn't exist
+            );
             
+            // Assign the role to the created user
             $created_user->assignRole($user['role']);
         }
     }
