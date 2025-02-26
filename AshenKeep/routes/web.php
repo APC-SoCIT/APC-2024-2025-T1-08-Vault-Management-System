@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\BeneficiaryController;
 use App\Http\Controllers\RequirementController;
 use App\Livewire\OfficeStaffDashboard;
+use App\Livewire\AboutUs;
+use App\Livewire\FAQs;
 use App\Http\Controllers\StaffApplyController;
 use App\Http\Controllers\AdminVaultController;
 use App\Http\Controllers\ApplicantVaultController;
@@ -13,6 +15,7 @@ use App\Http\Controllers\ApplicationFirstStepController;
 use App\Http\Controllers\SecondApplyController;
 use App\Http\Controllers\ThirdApplyController;
 use App\Http\Controllers\FourthApplyController;
+
 
 
 $url = config('app.url');
@@ -173,3 +176,9 @@ Route::post('/admin/issue-proof/{applicantName}', [RequirementController::class,
 //Vaults
 Route::get('/applicant/vault', [ApplicantVaultController::class, 'viewApplicantVaults'])->name('applicant_vaults');
 Route::get('/admin/vault', [AdminVaultController::class, 'viewAdminVaults'])->name('admin_vaults');
+
+//FAQs
+Route::get('/faqs', FAQs::class)->name('faq_s');
+
+//AboutUs
+Route::get('/about-us', AboutUs::class)->name('about_us');
