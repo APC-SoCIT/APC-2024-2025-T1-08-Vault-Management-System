@@ -132,17 +132,6 @@ Route::get('/fifth-apply', [BeneficiaryController::class, 'create'])->name('fift
 
 Route::post('/fifth-apply', [BeneficiaryController::class, 'store'])->name('fifth-apply.store');
 
-Route::get('/with-existing', function () {
-    $user = Auth::user();
-
-    // Explicit authentication check
-    if (!$user || !$user->hasRole('Applicant')) {
-        abort(403); // Forbidden
-    }
-
-    return view('oops');
-})->middleware('auth')->name('with.existing');
-
 Route::get('/applicant/submission', function () {
     $user = Auth::user();
 
@@ -152,7 +141,7 @@ Route::get('/applicant/submission', function () {
     }
 
     return view('submission_requirements');
-})->middleware('auth');
+})->middleware('auth')->name('applicant.submission');
 
 Route::get('/officestaff/applications', [StaffApplyController::class, 'index'])->name('officestaff.appliations');
 Route::middleware(['auth'])->group(function () {

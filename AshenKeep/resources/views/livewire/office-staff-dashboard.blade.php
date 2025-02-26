@@ -2,6 +2,9 @@
     <h1>Office Staff Dashboard</h1>
 
     <!-- Check if there are any applications -->
+    <div class="overflow-auto max-h-[400px]">
+                    <table class="table table-bordered w-full rounded-lg overflow-hidden">
+                        <thead class="bg-[#102A45] text-white text-lg font-semibold rounded-t-lg">
     @if($applications->isEmpty())
         <p>No applications found.</p>
     @else
@@ -13,7 +16,7 @@
                     <th>Status</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="bg-white border border-gray-300 text-blue-900 shadow-lg rounded-xl p-6 mt-6 gap-3">
                 @foreach($applications as $application)
                     <tr>
                         <td>{{ $application->full_name }}</td>
