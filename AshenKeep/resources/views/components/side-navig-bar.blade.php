@@ -32,10 +32,6 @@
         <!-- Office Staff Dashboard Side Bar -->
         @hasrole('Office Staff')
             <div class="space-y-3 w-full">
-                <x-nav-link href="{{ url('/officestaff/applications') }}" :active="request()->routeIs('officestaff.applications')" class="flex items-center gap-3">
-                    <x-managea-icon />
-                    {{ __('Manage Applications') }}
-                </x-nav-link>
                 <x-nav-link href="{{ url('/officestaff/requirements') }}" :active="request()->routeIs('officestaff.requirements')" class="flex items-center gap-3">
                     <x-manager-icon />
                     {{ __('Manage Requirements') }}

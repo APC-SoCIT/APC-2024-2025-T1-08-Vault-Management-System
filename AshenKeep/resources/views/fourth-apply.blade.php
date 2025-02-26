@@ -12,10 +12,6 @@
 
                                 <!-- Spouse Information -->
                                 <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md">
-                                    <label class="flex items-center space-x-2">
-                                        <input type="checkbox" name="has_spouse" class="form-checkbox">
-                                        <span class="font-semibold">I have a spouse</span>
-                                    </label>
 
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
                                         <div>

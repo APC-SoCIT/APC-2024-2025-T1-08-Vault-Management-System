@@ -25,6 +25,7 @@ class RequirementController extends Controller
      */
     public function store(Request $request)
     {
+        $user = Auth::user();
         $request->validate([
             'full_name' => 'required|string|max:255',
             'requirement_type' => 'required|string',
@@ -44,6 +45,7 @@ class RequirementController extends Controller
             'requirement_type' => $request->requirement_type,
             'files' => $filePaths,
             'status' => 'pending',
+            'user_id' => $user->id,
         ]);
 
         return redirect()->route('applicant_requirements')->with('success', 'Requirement submitted successfully.');
