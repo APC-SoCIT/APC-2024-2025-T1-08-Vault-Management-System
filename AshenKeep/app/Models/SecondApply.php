@@ -12,9 +12,9 @@ class SecondApply extends Model
     protected $table = 'second_apply';
     protected $fillable = [
         'user_id',
-        'permanent_address',
-        'current_address',
-        'provincial_address',
+        'currregion', 'currprovince', 'currcity', 'currbarangay', 'currstreet',
+        'permregion', 'permprovince', 'permcity', 'permbarangay', 'permstreet',
+        'provregion', 'provprovince', 'provcity', 'provbarangay', 'provstreet',
         'status'
         
     ];
