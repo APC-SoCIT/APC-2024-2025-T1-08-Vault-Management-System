@@ -22,7 +22,7 @@
                                     type="text" 
                                     name="full_name" 
                                     id="full_name" 
-                                    value="{{ $application->full_name ?? '' }}" 
+                                    value="{{ old('full_name', $full_name) }}"
                                     class="w-full border border-gray-300 rounded-lg px-4 py-2 mt-1 text-black focus:ring-2 focus:ring-blue-400 focus:outline-none" 
                                     readonly
                                 >

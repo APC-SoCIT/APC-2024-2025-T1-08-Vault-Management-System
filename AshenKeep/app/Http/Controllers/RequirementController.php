@@ -10,14 +10,16 @@ use Illuminate\Support\Facades\Auth;
 class RequirementController extends Controller
 {
     public function create()
-{
-    $user = Auth::user();
+    {
+        $user = Auth::user();
     
-    // Fetch the full name from the application based on the logged-in user
-    $application = \App\Models\Apply::where('user_id', $user->id)->first();
-
-    return view('submission_requirements', compact('application'));
-}
+        // Fetch the full name from application_first_step
+        $applicant = \App\Models\Apply::where('user_id', $user->id)->first();
+    
+        return view('submission_requirements', [
+            'full_name' => $applicant ? $applicant->full_name : '' // Pass full name or empty string
+        ]);
+    }
     /**
      * Submit requirements and store in the database.
      */
