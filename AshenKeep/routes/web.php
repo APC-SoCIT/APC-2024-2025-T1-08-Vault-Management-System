@@ -143,6 +143,17 @@ Route::get('/applicant/submission', function () {
     return view('submission_requirements');
 })->middleware('auth')->name('applicant.submission');
 
+Route::get('/applicant/requirements', function () {
+    $user = Auth::user();
+
+    // Explicit authentication check
+    if (!$user || !$user->hasRole('Applicant')) {
+        abort(403); // Forbidden
+    }
+
+    return view('applicant_requirements');
+})->middleware('auth')->name('applicant.requirements');
+
 Route::get('/officestaff/applications', [StaffApplyController::class, 'index'])->name('officestaff.appliations');
 Route::middleware(['auth'])->group(function () {
     Route::get('/second-apply', [SecondApplyController::class, 'create'])->name('second-apply.create');

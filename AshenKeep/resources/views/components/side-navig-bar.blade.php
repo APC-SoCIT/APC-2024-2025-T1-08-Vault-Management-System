@@ -57,6 +57,11 @@
                     {{ __('Apply') }}
                 </x-nav-link>
 
+                <x-nav-link href="{{ url('/applicant/requirements') }}" :active="request()->routeIs('applicant.requirements')" class="flex items-center gap-3">
+                    <x-faq-icon />
+                    {{ __('FAQs') }}
+                </x-nav-link>
+
                 <x-nav-link href="{{ url('/applicant/vault') }}" :active="request()->routeIs('applicant.vault')" class="flex items-center gap-3">
                     <x-vault-icon />
                     {{ __('View Vaults') }}
