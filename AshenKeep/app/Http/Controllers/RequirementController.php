@@ -9,6 +9,15 @@ use Illuminate\Support\Facades\Auth;
 
 class RequirementController extends Controller
 {
+    public function create()
+{
+    $user = Auth::user();
+    
+    // Fetch the full name from the application based on the logged-in user
+    $application = \App\Models\Apply::where('user_id', $user->id)->first();
+
+    return view('submission_requirements', compact('application'));
+}
     /**
      * Submit requirements and store in the database.
      */

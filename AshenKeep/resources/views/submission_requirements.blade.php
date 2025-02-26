@@ -9,6 +9,8 @@
                 <div class="bg-[#F6F2E9] shadow-2xl sm:rounded-lg p-6">
                     <div class="text-black rounded-lg p-6 overflow-auto">
                         <h2 class="text-black text-3xl font-bold mb-6">Submit Requirements</h2>
+
+                        <p class="text-lg text-black mb-4">Please submit the required requirements for vault: a valid Goverment ID and Baptism.</p>
                         
                         <form action="{{ route('submission_requirements') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
                             @csrf
@@ -20,8 +22,9 @@
                                     type="text" 
                                     name="full_name" 
                                     id="full_name" 
+                                    value="{{ $application->full_name ?? '' }}" 
                                     class="w-full border border-gray-300 rounded-lg px-4 py-2 mt-1 text-black focus:ring-2 focus:ring-blue-400 focus:outline-none" 
-                                    required
+                                    readonly
                                 >
                             </div>
                             
