@@ -1,29 +1,42 @@
-<?php
+<?php 
 
 namespace App\Livewire;
 
-use App\Models\Apply;
 use Livewire\Component;
+use App\Models\Apply;
 
 class OfficeStaffDashboard extends Component
 {
-    public $applications;
+    public $expandedApplicationId = null;
 
-    // Mount method will load the applications when the component is first initialized
-    public function mount()
+    protected $listeners = ['refreshComponent' => 'render'];
+
+    public function toggleForms($id)
     {
-        $this->applications = Apply::latest()->get(); // Fetch the latest applications
+        $this->expandedApplicationId = ($this->expandedApplicationId === $id) ? null : $id;
+        $this->dispatch('refreshComponent'); // Refresh UI
     }
 
-    // Method to refresh the applications
-    public function refreshApplications()
+    public function updateStatus($id, $status)
     {
-        $this->applications = Apply::latest()->get(); // Fetch updated applications
+        Apply::where('id', $id)->update(['status' => $status]);
+
+        $this->expandedApplicationId = null; // Collapse expanded section if status is updated
+        $this->dispatch('refreshComponent'); // Refresh UI
     }
 
-    // Render method will return the view with the latest applications
+    public function updateAllStatus($status)
+    {
+        Apply::where('status', 'pending')->update(['status' => $status]);
+        $this->dispatch('refreshComponent'); // Refresh UI
+    }
+
     public function render()
     {
-        return view('livewire.office-staff-dashboard');
+        return view('livewire.office-staff-dashboard', [
+            'applications' => Apply::with(['secondApply', 'thirdApply', 'fourthApply', 'beneficiary'])
+                                   ->whereNotIn('status', ['Rejected', 'Approved']) // Exclude rejected and approved
+                                   ->get(),
+        ]);
     }
 }

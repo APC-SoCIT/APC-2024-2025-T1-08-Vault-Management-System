@@ -61,6 +61,6 @@ class SecondApplyController extends Controller
             'status' => 'pending',
         ]);
     
-        return redirect()->back()->with('success', 'Application submitted successfully.');
+        return view('apply-choice')->with('success', 'Application submitted successfully.');
     }
 }

@@ -23,7 +23,9 @@ class ApplicationFirstStepController extends Controller
             return redirect()->back()->with('error', 'You are already done with that step.');
         }
 
-        $vaults = Vault::all();
+        // Fetch only vaults that are NOT already occupied
+        $vaults = Vault::where('availability', 'Available')->get();
+        
         return view('application-first-step', compact('vaults'));
     }
 
@@ -46,7 +48,7 @@ class ApplicationFirstStepController extends Controller
             'place_of_catholic_baptism' => 'required|string|max:255',
             'date_of_catholic_baptism' => 'required|date',
             'religious_organization_affiliated_with' => 'required|string|max:255',
-            'vault_id' => 'required|exists:vaults,id', // Ensure the vault exists
+            'vault_id' => 'required|exists:vaults,id',
         ]);
 
         $validatedData['user_id'] = $user->id;

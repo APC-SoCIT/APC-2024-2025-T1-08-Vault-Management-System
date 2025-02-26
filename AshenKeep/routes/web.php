@@ -132,16 +132,9 @@ Route::get('/fifth-apply', [BeneficiaryController::class, 'create'])->name('fift
 
 Route::post('/fifth-apply', [BeneficiaryController::class, 'store'])->name('fifth-apply.store');
 
-Route::get('/applicant/submission', function () {
-    $user = Auth::user();
-
-    // Explicit authentication check
-    if (!$user || !$user->hasRole('Applicant')) {
-        abort(403); // Forbidden
-    }
-
-    return view('submission_requirements');
-})->middleware('auth')->name('applicant.submission');
+Route::get('/applicant/submission', [RequirementController::class, 'create'])
+    ->middleware('auth')
+    ->name('applicant.submission');
 
 Route::get('/applicant/requirements', function () {
     $user = Auth::user();
