@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('application_third_step', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Relates to the users table
+            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->string('donors_occupation')->nullable();
             $table->string('employers_name_or_business_name')->nullable();
             $table->text('business_address')->nullable();
@@ -20,7 +22,7 @@ return new class extends Migration
             $table->string('business_landline_number')->nullable();
             $table->string('business_mobile_number')->nullable();
             $table->string('position')->nullable();
-            $table->integer('years_in_employment_or_business')->nullable();
+            $table->string('years_in_employment_or_business')->nullable();
 
             $table->timestamps();
         });

@@ -23,7 +23,7 @@
                             <tr>
                                 <th class="p-6">Vault Number</th>
                                 <th class="p-6">Location</th>
-                                <th class="p-6">Availability</th>
+                                <th class="p-6">Status</th>
                                 <th class="p-6">Price</th>
                             </tr>
                         </thead>
@@ -32,7 +32,7 @@
                                 <tr>
                                     <td class="text-center gap-3">{{ $vault->vault_number }}</td>
                                     <td class="text-center gap-3">{{ $vault->location }}</td>
-                                    <td class="text-center gap-3">{{ $vault->availability }}</td>
+                                    <td class="text-center gap-3">{{ $vault->status}}</td>
                                     <td class="text-center gap-3">${{ number_format($vault->price, 2) }}</td>
                                 </tr>
                             @endforeach

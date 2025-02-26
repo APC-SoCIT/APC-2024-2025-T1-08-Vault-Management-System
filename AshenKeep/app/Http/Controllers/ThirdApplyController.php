@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Apply;
-use App\Models\Vault;
+use App\Models\ThirdApply;
 use Illuminate\Support\Facades\Auth;
 
-class ApplicationFirstStepController extends Controller
+class ThirdApplyController extends Controller
 {
     public function create()
     {
@@ -19,12 +18,11 @@ class ApplicationFirstStepController extends Controller
         }
         
         // Check if the user already has an application
-        if (Apply::where('user_id', $user->id)->exists()) {
+        if (ThirdApply::where('user_id', $user->id)->exists()) {
             return redirect()->back()->with('error', 'You are already done with that step.');
         }
 
-        $vaults = Vault::all();
-        return view('application-first-step', compact('vaults'));
+        return view('application-third-step');
     }
 
     public function store(Request $request)
@@ -32,27 +30,25 @@ class ApplicationFirstStepController extends Controller
         $user = Auth::user();
         
         // Ensure the user can only submit one application
-        if (Apply::where('user_id', $user->id)->exists()) {
+        if (ThirdApply::where('user_id', $user->id)->exists()) {
             return redirect()->back()->with('error', 'You have already submitted an application.');
         }
 
         $validatedData = $request->validate([
-            'full_name' => 'required|string|max:255',
-            'email' => 'required|email|unique:application_first_step,email',
-            'mobile_number' => 'required|string|max:20',
-            'date_of_birth' => 'required|date',
-            'place_of_birth' => 'required|string|max:255',
-            'citizenship' => 'required|string|max:255',
-            'place_of_catholic_baptism' => 'required|string|max:255',
-            'date_of_catholic_baptism' => 'required|date',
-            'religious_organization_affiliated_with' => 'required|string|max:255',
-            'vault_id' => 'required|exists:vaults,id', // Ensure the vault exists
+            'donors_occupation' => 'nullable|string|max:255',
+            'employers_name_or_business_name' => 'nullable|string|max:255',
+            'business_address' => 'nullable|string|max:255',
+            'employers_email_or_business_email_address' => 'nullable|email|max:255',
+            'business_landline_number' => 'nullable|string|max:20',
+            'business_mobile_number' => 'nullable|string|max:20',
+            'position' => 'nullable|string|max:255',
+            'years_in_employment_or_business' => 'nullable|string|max:255',
         ]);
 
         $validatedData['user_id'] = $user->id;
         $validatedData['status'] = 'pending';
 
-        Apply::create($validatedData);
+        ThirdApply::create($validatedData);
 
         return view('apply-choice')->with('success', 'Application submitted successfully.');
     }

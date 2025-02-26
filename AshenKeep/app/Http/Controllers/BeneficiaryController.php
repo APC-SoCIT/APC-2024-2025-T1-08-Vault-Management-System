@@ -3,128 +3,80 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\FirstBeneficiary;
-use App\Models\SecondBeneficiary;
-use App\Models\ThirdBeneficiary;
+use App\Models\Beneficiary;
+use Illuminate\Support\Facades\Auth;
 
 class BeneficiaryController extends Controller
 {
-    public function page6()
+    public function create()
     {
-        return view('sixth-apply');
+        $user = Auth::user();
+        
+        // Ensure the user is authenticated and has the 'Applicant' role
+        if (!$user || !$user->hasRole('Applicant')) {
+            abort(403); // Forbidden
+        }
+        
+        // Check if the user already has an application
+        if (Beneficiary::where('user_id', $user->id)->exists()) {
+            return redirect()->back()->with('error', 'You are already done with that step.');
+        }
+
+        return view('fifth-apply');
     }
 
-    // Handle the form submission and save the data
-    public function savePage6(Request $request)
+    public function store(Request $request)
     {
-        // Validate the input
-        $validated = $request->validate([
-            'full_name' => 'required|string|max:255',
-            'permanent_address' => 'required|string|max:255',
-            'current_address' => 'required|string|max:255',
-            'provincial_address' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'landline_number' => 'nullable|string|max:20',
-            'mobile_number' => 'required|string|max:20',
-            'date_of_birth' => 'required|date',
-            'place_of_birth' => 'required|string|max:255',
-            'citizenship' => 'required|string|max:255',
-            'place_of_catholic_baptism' => 'nullable|string|max:255',
-            'date_of_catholic_baptism' => 'nullable|date',
+        $user = Auth::user();
+        
+        // Ensure the user can only submit one application
+        if (Beneficiary::where('user_id', $user->id)->exists()) {
+            return redirect()->back()->with('error', 'You have already submitted an application.');
+        }
+
+        $validatedData = $request->validate([
+            'first_full_name' => 'required|string|max:255',
+            'first_permanent_address' => 'required|string|max:255',
+            'first_current_address' => 'required|string|max:255',
+            'first_provincial_address'  => 'required|string|max:255',
+            'first_email' => 'required|email',
+            'first_mobile_number' => 'required|string|max:20',
+            'first_date_of_birth' => 'required|date',
+            'first_place_of_birth' => 'required|string|max:255',
+            'first_citizenship' => 'required|string|max:255',
+            'first_place_of_catholic_baptism' => 'required|string|max:255',
+            'first_date_of_catholic_baptism' => 'required|date',
+
+            'second_full_name' => 'required|string|max:255',
+            'second_permanent_address' => 'required|string|max:255',
+            'second_current_address' => 'required|string|max:255',
+            'second_provincial_address'  => 'required|string|max:255',
+            'second_email' => 'required|email',
+            'second_mobile_number' => 'required|string|max:20',
+            'second_date_of_birth' => 'required|date',
+            'second_place_of_birth' => 'required|string|max:255',
+            'second_citizenship' => 'required|string|max:255',
+            'second_place_of_catholic_baptism' => 'required|string|max:255',
+            'second_date_of_catholic_baptism' => 'required|date',
+
+            'third_full_name' => 'required|string|max:255',
+            'third_permanent_address' => 'required|string|max:255',
+            'third_current_address' => 'required|string|max:255',
+            'third_provincial_address'  => 'required|string|max:255',
+            'third_email' => 'required|email',
+            'third_mobile_number' => 'required|string|max:20',
+            'third_date_of_birth' => 'required|date',
+            'third_place_of_birth' => 'required|string|max:255',
+            'third_citizenship' => 'required|string|max:255',
+            'third_place_of_catholic_baptism' => 'required|string|max:255',
+            'third_date_of_catholic_baptism' => 'required|date',
         ]);
 
-        // Add the user_id to the data before saving
-        $data = $request->only([
-            'full_name', 'permanent_address', 'current_address', 'provincial_address', 'email', 
-            'landline_number', 'mobile_number', 'date_of_birth', 'place_of_birth', 'citizenship',
-            'place_of_catholic_baptism', 'date_of_catholic_baptism'
-        ]);
-        $data['user_id'] = auth()->id(); // Set the user_id to the logged-in user's ID
+        $validatedData['user_id'] = $user->id;
+        $validatedData['status'] = 'pending';
 
-        // Save the data in the database
-        FirstBeneficiary::create($data);
+        Beneficiary::create($validatedData);
 
-        return redirect()->route('applicant.page7')->with('status', 'Application submitted successfully!');
-    }
-
-    public function page7()
-    {
-        return view('seventh-apply');
-    }
-
-    // Handle the form submission and save the data
-    public function savePage7(Request $request)
-    {
-        // Validate the input
-        $validated = $request->validate([
-            'full_name' => 'required|string|max:255',
-            'permanent_address' => 'required|string|max:255',
-            'current_address' => 'required|string|max:255',
-            'provincial_address' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'landline_number' => 'nullable|string|max:20',
-            'mobile_number' => 'required|string|max:20',
-            'date_of_birth' => 'required|date',
-            'place_of_birth' => 'required|string|max:255',
-            'citizenship' => 'required|string|max:255',
-            'place_of_catholic_baptism' => 'nullable|string|max:255',
-            'date_of_catholic_baptism' => 'nullable|date',
-        ]);
-
-        // Add the user_id to the data before saving
-        $data = $request->only([
-            'full_name', 'permanent_address', 'current_address', 'provincial_address', 'email', 
-            'landline_number', 'mobile_number', 'date_of_birth', 'place_of_birth', 'citizenship',
-            'place_of_catholic_baptism', 'date_of_catholic_baptism'
-        ]);
-        $data['user_id'] = auth()->id(); // Set the user_id to the logged-in user's ID
-
-        // Save the data in the database
-        SecondBeneficiary::create($data);
-
-        return redirect()->route('applicant.page8')->with('status', 'Application submitted successfully!');
-    }
-
-    public function page8()
-    {
-        return view('eigth-apply');
-    }
-
-    // Handle the form submission and save the data
-    public function savePage8(Request $request)
-    {
-        // Validate the input
-        $validated = $request->validate([
-            'full_name' => 'required|string|max:255',
-            'permanent_address' => 'required|string|max:255',
-            'current_address' => 'required|string|max:255',
-            'provincial_address' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'landline_number' => 'nullable|string|max:20',
-            'mobile_number' => 'required|string|max:20',
-            'date_of_birth' => 'required|date',
-            'place_of_birth' => 'required|string|max:255',
-            'citizenship' => 'required|string|max:255',
-            'place_of_catholic_baptism' => 'nullable|string|max:255',
-            'date_of_catholic_baptism' => 'nullable|date',
-        ]);
-
-        // Add the user_id to the data before saving
-        $data = $request->only([
-            'full_name', 'permanent_address', 'current_address', 'provincial_address', 'email', 
-            'landline_number', 'mobile_number', 'date_of_birth', 'place_of_birth', 'citizenship',
-            'place_of_catholic_baptism', 'date_of_catholic_baptism'
-        ]);
-        $data['user_id'] = auth()->id(); // Set the user_id to the logged-in user's ID
-
-        // Save the data in the database
-        ThirdBeneficiary::create($data);
-
-        return redirect()->route('applicant.success')->with('status', 'Application submitted successfully!');
-    }
-
-    public function success()
-    {
-        return view('success');
+        return view('apply-choice')->with('success', 'Application submitted successfully.');
     }
 }

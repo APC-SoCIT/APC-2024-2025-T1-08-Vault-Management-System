@@ -11,6 +11,7 @@ use App\Http\Controllers\AdminVaultController;
 use App\Http\Controllers\ApplicantVaultController;
 use App\Http\Controllers\ApplicationFirstStepController;
 use App\Http\Controllers\SecondApplyController;
+use App\Http\Controllers\ThirdApplyController;
 use App\Http\Controllers\FourthApplyController;
 
 
@@ -122,6 +123,14 @@ Route::get('/apply', function () {
 Route::get('/first-apply', [ApplicationFirstStepController::class, 'create'])->name('applications.create');
 
 Route::post('/first-apply', [ApplicationFirstStepController::class, 'store'])->name('applications.store');
+
+Route::get('/third-apply', [ThirdApplyController::class, 'create'])->name('third-apply.create');
+
+Route::post('/third-apply', [ThirdApplyController::class, 'store'])->name('third-apply.store');
+
+Route::get('/fifth-apply', [BeneficiaryController::class, 'create'])->name('fifth-apply.create');
+
+Route::post('/fifth-apply', [BeneficiaryController::class, 'store'])->name('fifth-apply.store');
 
 Route::get('/with-existing', function () {
     $user = Auth::user();

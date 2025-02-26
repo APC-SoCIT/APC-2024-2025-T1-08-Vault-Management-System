@@ -34,7 +34,7 @@ return new class extends Migration
             $table->string('mothers_landline_number')->nullable();
             $table->string('mothers_mobile_number')->nullable();
 
-            $table->string('status')->default('pending');
+            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->timestamps();
         });
     }
