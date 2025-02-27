@@ -77,12 +77,12 @@
             {{ __('View Vaults') }}
         </x-nav-link>
 
-        <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" class="flex items-center gap-3">
+        <x-nav-link href="{{ route('about-us') }}" :active="request()->routeIs('dashboard')" class="flex items-center gap-3">
             <x-about-icon />
             {{ __('About Us') }}
         </x-nav-link>
 
-        <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" class="flex items-center gap-3">
+        <x-nav-link href="{{ route('faqs') }}" :active="request()->routeIs('dashboard')" class="flex items-center gap-3">
             <x-faq-icon />
             {{ __('FAQs') }}
         </x-nav-link>
