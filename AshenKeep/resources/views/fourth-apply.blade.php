@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="flex">
         <x-side-navig-bar />
-
+        
         <div class="flex-1 p-6 bg-keep-white">
             <div class="flex-1">
                 <div class="py-1">
@@ -12,8 +12,12 @@
 
                                 <!-- Spouse Information -->
                                 <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md">
-
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
+                                    <label class="flex items-center space-x-2">
+                                        <input type="checkbox" id="has_spouse" onclick="toggleSpouseSection()" class="form-checkbox">
+                                        <span class="font-semibold">I have a spouse</span>
+                                    </label>
+                                    
+                                    <div id="spouse-info" class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3 hidden">
                                         <div>
                                             <label class="block text-sm font-medium">Spouse's Name</label>
                                             <input type="text" name="spouses_name" value="{{ old('spouses_name', $spouse->spouses_name ?? '') }}" class="w-full border p-2 rounded-lg">
@@ -63,7 +67,7 @@
                                             <input type="tel" name="fathers_mobile_number" value="{{ old('fathers_mobile_number', $parent->fathers_mobile_number ?? '') }}" class="w-full border p-2 rounded-lg">
                                         </div>
                                     </div>
-
+                                    
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
                                         <div>
                                             <label class="block text-sm font-medium">Mother's Name</label>
@@ -104,4 +108,17 @@
             </div>
         </div>
     </div>
+    
+    <script>
+        function toggleSection(id) {
+            const section = document.getElementById(id);
+            section.style.display = section.style.display === 'none' ? 'grid' : 'none';
+        }
+        
+        function toggleSpouseSection() {
+            const spouseSection = document.getElementById('spouse-info');
+            const checkbox = document.getElementById('has_spouse');
+            spouseSection.style.display = checkbox.checked ? 'grid' : 'none';
+        }
+    </script>
 </x-app-layout>
