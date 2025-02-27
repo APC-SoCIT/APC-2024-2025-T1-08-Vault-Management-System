@@ -48,36 +48,47 @@
                 </x-nav-link>
             </div>
         @endhasrole
+<!-- Applicant Dashboard Side Bar -->
+@hasrole('Applicant')
+    <div class="space-y-3 w-full">
+        <x-nav-link href="{{ route('applicant.application') }}" :active="request()->routeIs('applicant.application')" class="flex items-center gap-3">
+            <x-apply-icon />
+            {{ __('Apply') }}
+        </x-nav-link>
 
-        <!-- Applicant Dashboard Side Bar -->
-        @hasrole('Applicant')
-            <div class="space-y-3 w-full">
-                <x-nav-link href="{{ route('applicant.application') }}" :active="request()->routeIs('applicant.application')" class="flex items-center gap-3">
-                    <x-apply-icon />
-                    {{ __('Apply') }}
-                </x-nav-link>
+        @php
+            $isBeneficiary = \App\Models\Beneficiary::where('user_id', auth()->id())->exists()
+        @endphp
 
-                <x-nav-link href="{{ url('/applicant/requirements') }}" :active="request()->routeIs('applicant.requirements')" class="flex items-center gap-3">
-                    <x-requirements-icon />
-                    {{ __('Requirements') }}
-                </x-nav-link>
+        @if($isBeneficiary)
+            <x-nav-link href="{{ url('/applicant/requirements') }}" :active="request()->routeIs('applicant.requirements')" class="flex items-center gap-3">
+                <x-requirements-icon />
+                {{ __('Requirements') }}
+            </x-nav-link>
+        @else
+            <x-nav-link href="#" x-data @click.prevent="alert('You cannot access requirements until you have finished your application')" class="flex items-center gap-3 text-gray-400 cursor-not-allowed">
+                <x-requirements-icon />
+                {{ __('Requirements') }}
+            </x-nav-link>
+        @endif
 
-                <x-nav-link href="{{ url('/applicant/vault') }}" :active="request()->routeIs('applicant.vault')" class="flex items-center gap-3">
-                    <x-vault-icon />
-                    {{ __('View Vaults') }}
-                </x-nav-link>
+        <x-nav-link href="{{ url('/applicant/vault') }}" :active="request()->routeIs('applicant.vault')" class="flex items-center gap-3">
+            <x-vault-icon />
+            {{ __('View Vaults') }}
+        </x-nav-link>
 
-                <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" class="flex items-center gap-3">
-                    <x-about-icon />
-                    {{ __('About Us') }}
-                </x-nav-link>
+        <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" class="flex items-center gap-3">
+            <x-about-icon />
+            {{ __('About Us') }}
+        </x-nav-link>
 
-                <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" class="flex items-center gap-3">
-                    <x-faq-icon />
-                    {{ __('FAQs') }}
-                </x-nav-link>
-            </div>
-        @endhasrole
+        <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" class="flex items-center gap-3">
+            <x-faq-icon />
+            {{ __('FAQs') }}
+        </x-nav-link>
+    </div>
+@endhasrole
+
 
         <!-- Common Links -->
 @auth
