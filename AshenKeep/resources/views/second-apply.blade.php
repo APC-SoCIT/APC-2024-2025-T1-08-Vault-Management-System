@@ -17,89 +17,101 @@
 
                         <form method="POST" action="{{ route('second-apply.create') }}" class="space-y-6">
                             @csrf
-                            
+
                             <!-- Address Form -->
                             <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md">
                                 <div class="text-left font-semibold">Address Information</div>
-                                
+
                                 <!-- Current Address -->
                                 <div class="mt-3">
-                                    <div>Current Address</div>
+                                    <div class="">Current Address</div>
                                 </div>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
+                                <div class="address-group grid grid-cols-1 md:grid-cols-2 gap-4 mt-3" data-group="1">
                                     <div>
                                         <label class="block text-sm font-medium">Region</label>
-                                        <input type="text" name="currregion" value="{{ old('currregion', $addresses->currregion) }}" class="w-full border p-2 rounded-lg" required>
+                                        <select class="region-selector w-full border p-2 rounded-lg" data-group="1"></select>
+                                        <input type="hidden" name="currregion" class="region-text" data-group="1" value="{{ old('currregion', $addresses->currregion ?? '') }}" required>
                                     </div>
                                     <div>
-                                        <label class="block text-sm font-medium">Province</label>
-                                        <input type="text" name="currprovince" value="{{ old('currprovince', $addresses->currprovince) }}" class="w-full border p-2 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700">Province</label>
+                                        <select class="province-selector w-full border p-2 rounded-lg" data-group="1"></select>
+                                        <input type="hidden" name="currprovince" class="province-text" data-group="1" value="{{ old('currprovince', $addresses->currprovince ?? '') }}">
                                     </div>
                                     <div>
-                                        <label class="block text-sm font-medium">City / Municipality</label>
-                                        <input type="text" name="currcity" value="{{ old('currcity', $addresses->currcity) }}" class="w-full border p-2 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700">City / Municipality</label>
+                                        <select class="city-selector w-full border p-2 rounded-lg" data-group="1"></select>
+                                        <input type="hidden" name="currcity" class="city-text" data-group="1" value="{{ old('currcity', $addresses->currcity ?? '') }}">
                                     </div>
                                     <div>
-                                        <label class="block text-sm font-medium">Barangay</label>
-                                        <input type="text" name="currbarangay" value="{{ old('currbarangay', $addresses->currbarangay) }}" class="w-full border p-2 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700">Barangay</label>
+                                        <select class="barangay-selector w-full border p-2 rounded-lg" data-group="1"></select>
+                                        <input type="hidden" name="currbarangay" class="barangay-text" data-group="1" value="{{ old('currbarangay', $addresses->currbarangay ?? '') }}">
                                     </div>
                                     <div>
                                         <label class="block text-sm font-medium">Subdivision/Street/Blk&Lot</label>
-                                        <input type="text" name="currstreet" value="{{ old('currstreet', $addresses->currstreet) }}" class="w-full border p-2 rounded-lg">
+                                        <input type="text" name="currstreet" class="w-full border p-2 rounded-lg" value="{{ old('currstreet', $addresses->currstreet ?? '') }}">
                                     </div>
                                 </div>
 
                                 <!-- Permanent Address -->
                                 <div class="mt-3">
-                                    <div>Permanent Address</div>
+                                    <div class="">Permanent Address</div>
                                 </div>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
+                                <div class="address-group grid grid-cols-1 md:grid-cols-2 gap-4 mt-3" data-group="2">
                                     <div>
-                                        <label class="block text-sm font-medium">Region</label>
-                                        <input type="text" name="permregion" value="{{ old('permregion', $addresses->permregion) }}" class="w-full border p-2 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700">Region</label>
+                                        <select class="region-selector w-full border p-2 rounded-lg" data-group="2"></select>
+                                        <input type="hidden" name="permregion" class="region-text" data-group="2" value="{{ old('permregion', $addresses->permregion ?? '') }}">
                                     </div>
                                     <div>
-                                        <label class="block text-sm font-medium">Province</label>
-                                        <input type="text" name="permprovince" value="{{ old('permprovince', $addresses->permprovince) }}" class="w-full border p-2 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700">Province</label>
+                                        <select class="province-selector w-full border p-2 rounded-lg" data-group="2"></select>
+                                        <input type="hidden" name="permprovince" class="province-text" data-group="2" value="{{ old('permprovince', $addresses->permprovince ?? '') }}">
                                     </div>
                                     <div>
-                                        <label class="block text-sm font-medium">City / Municipality</label>
-                                        <input type="text" name="permcity" value="{{ old('permcity', $addresses->permcity) }}" class="w-full border p-2 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700">City / Municipality</label>
+                                        <select class="city-selector w-full border p-2 rounded-lg" data-group="2"></select>
+                                        <input type="hidden" name="permcity" class="city-text" data-group="2" value="{{ old('permcity', $addresses->permcity ?? '') }}">
                                     </div>
                                     <div>
-                                        <label class="block text-sm font-medium">Barangay</label>
-                                        <input type="text" name="permbarangay" value="{{ old('permbarangay', $addresses->permbarangay) }}" class="w-full border p-2 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700">Barangay</label>
+                                        <select class="barangay-selector w-full border p-2 rounded-lg" data-group="2"></select>
+                                        <input type="hidden" name="permbarangay" class="barangay-text" data-group="2" value="{{ old('permbarangay', $addresses->permbarangay ?? '') }}">
                                     </div>
                                     <div>
                                         <label class="block text-sm font-medium">Subdivision/Street/Blk&Lot</label>
-                                        <input type="text" name="permstreet" value="{{ old('permstreet', $addresses->permstreet) }}" class="w-full border p-2 rounded-lg">
+                                        <input type="text" name="permstreet" class="w-full border p-2 rounded-lg" value="{{ old('permstreet', $addresses->permstreet ?? '') }}">
                                     </div>
                                 </div>
 
                                 <!-- Provincial Address -->
                                 <div class="mt-3">
-                                    <div>Provincial Address</div>
+                                    <div class="">Provincial Address</div>
                                 </div>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
+                                <div class="address-group grid grid-cols-1 md:grid-cols-2 gap-4 mt-3" data-group="3">
                                     <div>
-                                        <label class="block text-sm font-medium">Region</label>
-                                        <input type="text" name="provregion" value="{{ old('provregion', $addresses->provregion) }}" class="w-full border p-2 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700">Region</label>
+                                        <select class="region-selector w-full border p-2 rounded-lg" data-group="3"></select>
+                                        <input type="hidden" name="provregion" class="region-text" data-group="3" value="{{ old('provregion', $addresses->provregion ?? '') }}">
                                     </div>
                                     <div>
-                                        <label class="block text-sm font-medium">Province</label>
-                                        <input type="text" name="provprovince" value="{{ old('provprovince', $addresses->provprovince) }}" class="w-full border p-2 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700">Province</label>
+                                        <select class="province-selector w-full border p-2 rounded-lg" data-group="3"></select>
+                                        <input type="hidden" name="provprovince" class="province-text" data-group="3" value="{{ old('provprovince', $addresses->provprovince ?? '') }}">
                                     </div>
                                     <div>
-                                        <label class="block text-sm font-medium">City / Municipality</label>
-                                        <input type="text" name="provcity" value="{{ old('provcity', $addresses->provcity) }}" class="w-full border p-2 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700">City / Municipality</label>
+                                        <select class="city-selector w-full border p-2 rounded-lg" data-group="3"></select>
+                                        <input type="hidden" name="provcity" class="city-text" data-group="3" value="{{ old('provcity', $addresses->provcity ?? '') }}">
                                     </div>
                                     <div>
-                                        <label class="block text-sm font-medium">Barangay</label>
-                                        <input type="text" name="provbarangay" value="{{ old('provbarangay', $addresses->provbarangay) }}" class="w-full border p-2 rounded-lg">
+                                        <label class="block text-sm font-medium text-gray-700">Barangay</label>
+                                        <select class="barangay-selector w-full border p-2 rounded-lg" data-group="3"></select>
+                                        <input type="hidden" name="provbarangay" class="barangay-text" data-group="3" value="{{ old('provbarangay', $addresses->provbarangay ?? '') }}">
                                     </div>
                                     <div>
                                         <label class="block text-sm font-medium">Subdivision/Street/Blk&Lot</label>
-                                        <input type="text" name="provstreet" value="{{ old('provstreet', $addresses->provstreet) }}" class="w-full border p-2 rounded-lg">
+                                        <input type="text" name="provstreet" class="w-full border p-2 rounded-lg" value="{{ old('provstreet', $addresses->provstreet ?? '') }}">
                                     </div>
                                 </div>
                             </div>
@@ -116,4 +128,14 @@
             </div>
         </div>
     </div>
+
+    <!-- JavaScript -->
+    <script>
+        function toggleSection(id) {
+            const section = document.getElementById(id);
+            section.style.display = section.style.display === 'none' ? 'grid' : 'none';
+        }
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/ph-address-selector.js"></script>
 </x-app-layout>
