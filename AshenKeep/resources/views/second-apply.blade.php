@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="flex h-screen">
+    <div class="flex">
         <!-- Sidebar Navigation -->
         <x-side-navig-bar />
 

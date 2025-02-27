@@ -80,20 +80,23 @@
         @endhasrole
 
         <!-- Common Links -->
-        <div class="mt-auto w-full space-y-3">
-            <x-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')" class="flex items-center gap-3">
-                <x-profile-icon />
-                {{ __('Profile') }}
-            </x-nav-link>
+@auth
+    <div class="mt-auto w-full space-y-3">
+        <x-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')" class="flex items-center gap-3">
+            <x-profile-icon />
+            {{ __('Profile') }}
+        </x-nav-link>
 
-            <form method="POST" action="{{ route('logout') }}" x-data>
-                @csrf
-                <x-nav-link href="{{ route('logout') }}" @click.prevent="$root.submit();" class="flex items-center gap-3">
-                    <x-logout-icon />
-                    {{ __('Log Out') }}
-                </x-nav-link>
-            </form>
-        </div>
+        <form method="POST" action="{{ route('logout') }}" x-data>
+            @csrf
+            <x-nav-link href="{{ route('logout') }}" @click.prevent="$root.submit();" class="flex items-center gap-3">
+                <x-logout-icon />
+                {{ __('Log Out') }}
+            </x-nav-link>
+        </form>
+    </div>
+@endauth
+
     </div>
 
     <!-- Hamburger Button -->

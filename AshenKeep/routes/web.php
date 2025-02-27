@@ -177,8 +177,5 @@ Route::post('/admin/issue-proof/{applicantName}', [RequirementController::class,
 Route::get('/applicant/vault', [ApplicantVaultController::class, 'viewApplicantVaults'])->name('applicant_vaults');
 Route::get('/admin/vault', [AdminVaultController::class, 'viewAdminVaults'])->name('admin_vaults');
 
-//FAQs
-Route::get('/faqs', FAQs::class)->name('faq_s');
-
-//AboutUs
-Route::get('/about-us', AboutUs::class)->name('about_us');
+Route::view('/about-us', 'about_layout');
+Route::view('/faqs', 'faq_s');
