@@ -44,13 +44,14 @@
     </div>
 
     <!-- Owned Vaults -->
-    <div class="bg-keep-light-blue text-white p-6 shadow-lg rounded-xl md:col-span-1">
-        <h2 class="text-xl font-semibold text-center">Owned Vault</h2>
-        <div class="mt-6 text-center text-lg space-y-2">
-            <p><strong>Vault Number:</strong> {{ $vaultNumber ?? 'N/A' }}</p>
-            <p><strong>Vault Location:</strong> {{ $vaultLocation ?? 'N/A' }}</p>
-            <p><strong>Vault Price:</strong> {{ $vaultPrice ?? 'N/A' }}</p>
-        </div>
+    <div class="bg-white text-white p-6 shadow-lg rounded-xl md:col-span-1">
+        <!-- Contact Information -->
+    <div class="bg-white p-6 rounded-xl flex flex-col items-center justify-center md:col-span-3">
+        <h2 class="text-lg font-semibold text-gray-700">Contact Us</h2>
+        <p class="text-gray-600 text-center">Humabon Place, Barangay Magallanes, Makati, Philippines</p>
+        <p class="text-gray-600">09090900909</p>
+        <p class="text-gray-600">stalphonsusparish2017@gmail.com</p>
+    </div>
     </div>
 
     <!-- Application Status -->
@@ -68,13 +69,5 @@
                 </span>
             </p>
         </div>
-    </div>
-
-    <!-- Contact Information -->
-    <div class="bg-white p-6 shadow-lg rounded-xl flex flex-col items-center justify-center md:col-span-3">
-        <h2 class="text-lg font-semibold text-gray-700">Contact Us</h2>
-        <p class="text-gray-600 text-center">Humabon Place, Barangay Magallanes, Makati, Philippines</p>
-        <p class="text-gray-600">09090900909</p>
-        <p class="text-gray-600">stalphonsusparish2017@gmail.com</p>
     </div>
 </div>
